@@ -1,0 +1,416 @@
+/* ==========================================================================
+   About page — imported by src/app/about/page.tsx only.
+   Everything is prefixed .about- so it cannot leak into other routes.
+   Responsive down to 360px: no fixed widths, grids collapse to one column.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+.about-hero {
+  text-align: center;
+}
+
+.about-hero__crumbs {
+  margin-bottom: 28px;
+}
+
+.about-hero__crumbs .tk-breadcrumbs__list {
+  justify-content: center;
+}
+
+.about-hero__title {
+  margin: 0 auto;
+  max-width: 15ch;
+}
+
+.about-hero__lead {
+  margin: 24px auto 0;
+  max-width: 66ch;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-muted-inverse);
+}
+
+.about-hero__actions {
+  margin-top: 32px;
+  justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   Proof band — every verified figure as a Stat tile
+   -------------------------------------------------------------------------- */
+.about-proof {
+  list-style: none;
+  padding: 0;
+  margin: 48px 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.about-proof > li {
+  display: flex;
+}
+
+.about-proof__note {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   Story
+   -------------------------------------------------------------------------- */
+.about-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.about-story__title {
+  margin: 0;
+  font-size: clamp(28px, 4.4vw, 40px);
+}
+
+.about-story__copy p {
+  margin-top: 18px;
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--text-muted-inverse);
+}
+
+.about-story__actions {
+  margin-top: 30px;
+}
+
+.about-story__panel {
+  padding: 32px;
+  background: var(--surface-card-on-dark);
+  border-radius: var(--radius-card);
+}
+
+.about-facts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.about-facts__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted-inverse);
+}
+
+.about-facts__value {
+  margin-top: 10px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.about-facts__value strong {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.about-facts__chips {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.about-facts__chips .tk-chip {
+  background: transparent;
+  border-color: var(--border-hairline-inverse);
+  color: var(--text-muted-inverse);
+}
+
+/* --------------------------------------------------------------------------
+   Team
+   -------------------------------------------------------------------------- */
+.about-team {
+  list-style: none;
+  padding: 0;
+  margin: 48px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.about-team > li {
+  display: flex;
+}
+
+.about-team__wrap {
+  width: 100%;
+}
+
+.about-team__card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  scroll-margin-top: calc(var(--nav-height) + 24px);
+  height: 100%;
+}
+
+.about-team__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  /* Cap the portrait so it stays a header for the card rather than dominating
+     it — at three-up on a 1280px container 4/5 would run past 480px tall. */
+  max-height: 340px;
+  background: #ededed;
+  overflow: hidden;
+}
+
+.about-team__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Branded fallback: identity gradient + initials. Logo gradient is used here
+   deliberately — it is an identity mark standing in for a portrait. */
+.about-team__avatar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-identity);
+}
+
+.about-team__initials {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(48px, 9vw, 72px);
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.about-team__body {
+  padding: var(--card-pad);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.about-team__name {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.about-team__role {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--action-blue);
+}
+
+.about-team__bio {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.about-team__focus {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Values
+   -------------------------------------------------------------------------- */
+.about-values {
+  list-style: none;
+  padding: 0;
+  margin: 48px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.about-values > li {
+  display: flex;
+}
+
+.about-values > li > * {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Process
+   -------------------------------------------------------------------------- */
+.about-process {
+  list-style: none;
+  padding: 0;
+  margin: 48px 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  counter-reset: about-step;
+}
+
+.about-process__item {
+  display: flex;
+}
+
+.about-process__card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--card-pad);
+  background: #fff;
+  border-radius: var(--radius-card);
+  height: 100%;
+}
+
+.about-process__num {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--action-blue);
+}
+
+.about-process__title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.about-process__copy {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Industries strip
+   -------------------------------------------------------------------------- */
+.about-industries {
+  list-style: none;
+  padding: 0;
+  margin: 48px 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.about-industries > li {
+  display: flex;
+}
+
+.about-industries__card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  border-radius: var(--radius-card);
+  background: var(--surface-card-on-purple);
+  height: 100%;
+  width: 100%;
+}
+
+.about-industries__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.about-industries__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.about-industries__copy {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  /* The muted inverse token composites to 3.8:1 on this card. */
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.about-industries__actions {
+  margin-top: 40px;
+  justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .about-story {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+  .about-team,
+  .about-process,
+  .about-industries,
+  .about-values {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .about-proof {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .about-team,
+  .about-process,
+  .about-industries,
+  .about-values {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .about-story__panel {
+    padding: 24px;
+  }
+  .about-hero__title {
+    max-width: none;
+  }
+  .about-hero__lead {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .about-proof {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

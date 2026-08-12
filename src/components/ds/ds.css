@@ -1,0 +1,685 @@
+/* ==========================================================================
+   Tekvion design-system component styles.
+   Ported 1:1 from the design export (_ds_bundle.js + ds-extensions.css) —
+   the mockup used inline styles; the values here are identical, only the
+   delivery mechanism changed. Imported once from src/app/globals.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Container
+   -------------------------------------------------------------------------- */
+.tk-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 32px;
+  width: 100%;
+}
+
+.tk-container--narrow {
+  max-width: 1000px;
+}
+
+.tk-container--article {
+  max-width: 800px;
+}
+
+/* --------------------------------------------------------------------------
+   Button
+   -------------------------------------------------------------------------- */
+.tk-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1.2;
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow var(--dur-base) var(--ease-standard);
+  border: 1px solid transparent;
+  white-space: nowrap;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.tk-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Sizes — padding and font-size pairs from the mockup */
+.tk-btn--sm { padding: 8px 16px; font-size: 14px; }
+.tk-btn--md { padding: 11px 22px; font-size: 15px; }
+.tk-btn--lg { padding: 14px 28px; font-size: 17px; }
+
+/* Variants — background / colour / border / hover glow */
+.tk-btn--primary {
+  background: var(--action-blue);
+  color: #fff;
+  border-color: transparent;
+}
+.tk-btn--primary:hover { box-shadow: 0 0 26px 3px rgba(0, 101, 255, 0.55); }
+
+.tk-btn--secondary-light {
+  background: #fff;
+  color: #000;
+  border-color: var(--border-hairline);
+}
+.tk-btn--secondary-light:hover { box-shadow: 0 0 22px 2px rgba(0, 0, 0, 0.18); }
+
+.tk-btn--secondary-dark {
+  background: #000;
+  color: #fff;
+  border-color: transparent;
+}
+.tk-btn--secondary-dark:hover { box-shadow: 0 0 24px 3px rgba(0, 0, 0, 0.45); }
+
+.tk-btn--ghost-light {
+  background: transparent;
+  color: #fff;
+  border-color: var(--border-hairline-inverse);
+}
+.tk-btn--ghost-light:hover { box-shadow: 0 0 22px 2px rgba(255, 255, 255, 0.28); }
+
+.tk-btn--block {
+  justify-content: center;
+  width: 100%;
+}
+
+/* Skewed white shine sweep — runs once per hover */
+.tk-btn__shine {
+  position: absolute;
+  top: 7%;
+  left: 0;
+  width: 8px;
+  height: 86%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 40px 22px rgba(255, 255, 255, 0.9);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+.tk-btn:hover .tk-btn__shine { animation: tk-shine 0.55s linear; }
+
+/* Trailing arrow: two glyphs sliding through one clipped slot */
+.tk-btn__arrow {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  flex: none;
+}
+.tk-btn--sm .tk-btn__arrow { width: 15px; height: 15px; }
+.tk-btn--md .tk-btn__arrow { width: 16px; height: 16px; }
+.tk-btn--lg .tk-btn__arrow { width: 18px; height: 18px; }
+
+.tk-btn__arrow svg {
+  position: absolute;
+  inset: 0;
+  transition: transform var(--dur-base) var(--ease-standard);
+}
+.tk-btn__arrow svg:first-child { transform: translateX(0); }
+.tk-btn__arrow svg:last-child { transform: translateX(-160%); }
+.tk-btn:hover .tk-btn__arrow svg:first-child { transform: translateX(160%); }
+.tk-btn:hover .tk-btn__arrow svg:last-child { transform: translateX(0); }
+
+/* --------------------------------------------------------------------------
+   Badge
+   -------------------------------------------------------------------------- */
+.tk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-badge);
+  font-weight: 500;
+  font-family: var(--font-body);
+  border: 1px solid transparent;
+  line-height: 1.4;
+}
+.tk-badge--action { background: var(--action-blue); color: #fff; }
+.tk-badge--dark {
+  background: #1C1C1E;
+  color: #fff;
+  border-color: var(--border-hairline-inverse);
+}
+.tk-badge--light {
+  background: #fff;
+  color: #000;
+  border-color: var(--border-hairline);
+}
+
+/* --------------------------------------------------------------------------
+   Underline — signature amber draw-in stroke
+   -------------------------------------------------------------------------- */
+.tk-underline {
+  position: relative;
+  display: inline-block;
+}
+.tk-underline__svg {
+  position: absolute;
+  left: -1.5%;
+  bottom: -0.13em;
+  width: 103%;
+  height: 0.24em;
+  overflow: visible;
+  pointer-events: none;
+}
+.tk-underline__path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.5s cubic-bezier(.5, .05, .35, 1);
+}
+.tk-underline__path--on { stroke-dashoffset: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tk-underline__path { transition: none; stroke-dashoffset: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   SectionHeading
+   -------------------------------------------------------------------------- */
+.tk-heading {
+  font-family: var(--font-heading);
+  text-align: center;
+}
+.tk-heading--left { text-align: left; }
+
+.tk-heading__title {
+  margin: 0;
+  font-size: var(--text-h2);
+  font-weight: var(--weight-heading);
+  line-height: var(--leading-tight);
+  color: #000;
+}
+.tk-heading--on-dark .tk-heading__title { color: #fff; }
+
+.tk-heading__kicker {
+  margin: 12px 0 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.tk-heading--on-dark .tk-heading__kicker { color: var(--text-muted-inverse); }
+.tk-heading--center .tk-heading__kicker { margin-inline: auto; max-width: 720px; }
+
+/* --------------------------------------------------------------------------
+   ServiceCard
+   -------------------------------------------------------------------------- */
+/* When a card carries an href the card element itself is the <a>, so the whole
+   surface is the target rather than the 32px arrow circle. */
+a.tk-service-card {
+  text-decoration: none;
+}
+a.tk-service-card--dark,
+a.tk-service-card--dark:hover,
+a.tk-service-card--purple,
+a.tk-service-card--purple:hover {
+  color: #fff;
+}
+a.tk-service-card--light,
+a.tk-service-card--light:hover {
+  color: #000;
+}
+
+.tk-service-card {
+  border-radius: var(--radius-card);
+  padding: var(--card-pad);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 150px;
+  font-family: var(--font-body);
+  border: 1px solid transparent;
+  transition: transform var(--dur-base) var(--ease-standard);
+  height: 100%;
+}
+.tk-service-card:hover { transform: translateY(-5px); }
+
+.tk-service-card--dark {
+  background: var(--surface-card-on-dark);
+  color: #fff;
+}
+.tk-service-card--light {
+  background: #fff;
+  color: #000;
+  border-color: var(--border-hairline);
+  box-shadow: var(--shadow-card);
+}
+.tk-service-card--purple {
+  background: var(--surface-card-on-purple);
+  color: #fff;
+}
+
+.tk-service-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.tk-service-card__title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: var(--text-card-title);
+  font-weight: var(--weight-heading);
+  line-height: 1.25;
+}
+
+/* globals.css sets `svg { display: block }`, so the optional leading glyph has
+   to sit in its own inline-flex box or it forms a block above the title. */
+.tk-service-card__icon {
+  display: inline-flex;
+  flex: none;
+}
+.tk-service-card__copy {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.tk-service-card--dark .tk-service-card__copy,
+.tk-service-card--purple .tk-service-card__copy { color: var(--text-muted-inverse); }
+.tk-service-card--light .tk-service-card__copy { color: var(--text-muted); }
+
+/* Circular arrow link: blue disc scales up, arrow slides through */
+.tk-arrow-link {
+  position: relative;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-flex;
+  color: inherit;
+  border: 1px solid var(--border-hairline-inverse);
+  transition: color var(--dur-base) var(--ease-standard),
+    border-color var(--dur-base) var(--ease-standard);
+}
+.tk-service-card--light .tk-arrow-link { border-color: var(--border-hairline); }
+
+.tk-arrow-link__disc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--action-blue);
+  transform: scale(0);
+  transition: transform var(--dur-base) var(--ease-standard);
+}
+.tk-arrow-link__glyph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--dur-base) var(--ease-standard);
+}
+.tk-arrow-link__glyph--in { transform: translateX(0); }
+.tk-arrow-link__glyph--out { transform: translateX(-140%); }
+
+.tk-service-card:hover .tk-arrow-link,
+.tk-arrow-link:hover { color: #fff; border-color: transparent; }
+.tk-service-card:hover .tk-arrow-link__disc,
+.tk-arrow-link:hover .tk-arrow-link__disc { transform: scale(1); }
+.tk-service-card:hover .tk-arrow-link__glyph--in,
+.tk-arrow-link:hover .tk-arrow-link__glyph--in { transform: translateX(140%); }
+.tk-service-card:hover .tk-arrow-link__glyph--out,
+.tk-arrow-link:hover .tk-arrow-link__glyph--out { transform: translateX(0); }
+
+/* --------------------------------------------------------------------------
+   BlogCard
+   -------------------------------------------------------------------------- */
+.tk-blog-card {
+  border-radius: var(--radius-card);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: var(--font-body);
+  border: 1px solid transparent;
+  height: 100%;
+}
+.tk-blog-card--dark {
+  background: #0B0B14;
+  color: #fff;
+  border-color: var(--border-hairline-inverse);
+}
+.tk-blog-card--light {
+  background: #fff;
+  color: #000;
+  border-color: var(--border-hairline);
+}
+
+.tk-blog-card__well {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+.tk-blog-card--dark .tk-blog-card__well { background: #1C1C1E; }
+.tk-blog-card--light .tk-blog-card__well { background: #EDEDED; }
+
+.tk-blog-card__well img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Fallback pattern for posts with no photograph — never an empty grey box */
+.tk-blog-card__well--generated {
+  background: linear-gradient(135deg, #0065FF 0%, #6900FD 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 18px;
+}
+.tk-blog-card__well-label {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #fff;
+  max-width: 85%;
+}
+
+.tk-blog-card__badge-tl { position: absolute; top: 10px; left: 10px; }
+.tk-blog-card__badge-br { position: absolute; bottom: 10px; right: 10px; }
+
+.tk-blog-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.tk-blog-card__title a { color: inherit; text-decoration: none; }
+.tk-blog-card__title a:hover { text-decoration: underline; }
+
+.tk-blog-card__excerpt {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  flex: 1;
+}
+.tk-blog-card--dark .tk-blog-card__excerpt { color: var(--text-muted-inverse); }
+.tk-blog-card--light .tk-blog-card__excerpt { color: var(--text-muted); }
+
+/* --------------------------------------------------------------------------
+   ProjectCard — real portfolio items on a light surface
+   -------------------------------------------------------------------------- */
+.tk-project-card {
+  background: #fff;
+  color: #000;
+  border-radius: var(--radius-card);
+  padding: 26px 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: var(--font-body);
+  height: 100%;
+  transition: transform var(--dur-base) var(--ease-standard);
+}
+.tk-project-card:hover { transform: translateY(-5px); }
+
+.tk-project-card__name {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.tk-project-card__descriptor {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.tk-project-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tk-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 9px;
+  border-radius: var(--radius-chip);
+  border: 1px solid var(--border-hairline);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text-muted);
+  background: #fff;
+}
+.tk-chip--solid {
+  background: var(--action-blue);
+  border-color: transparent;
+  color: #fff;
+}
+.tk-project-card__summary {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  flex: 1;
+}
+.tk-project-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 4px;
+}
+.tk-project-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--action-blue);
+  text-decoration: none;
+}
+.tk-project-card__link:hover { text-decoration: underline; }
+
+/* --------------------------------------------------------------------------
+   FaqRow — dark pill accordion
+   -------------------------------------------------------------------------- */
+.tk-faq {
+  background: #2A2A2C;
+  color: #fff;
+  border-radius: var(--radius-card);
+  font-family: var(--font-body);
+  overflow: hidden;
+}
+.tk-faq--light {
+  background: #fff;
+  color: #000;
+  border: 1px solid var(--border-hairline);
+}
+
+.tk-faq__button {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 22px;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.35;
+}
+.tk-faq__button:focus-visible {
+  outline: 2px solid var(--action-blue);
+  outline-offset: -2px;
+}
+.tk-faq__chevron {
+  display: flex;
+  flex: none;
+  transition: transform var(--dur-base) var(--ease-standard);
+}
+.tk-faq__button[aria-expanded='true'] .tk-faq__chevron { transform: rotate(90deg); }
+
+.tk-faq__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-base) var(--ease-standard);
+}
+.tk-faq__panel--open { grid-template-rows: 1fr; }
+.tk-faq__panel-inner { overflow: hidden; }
+.tk-faq__answer {
+  margin: 0;
+  padding: 0 22px 18px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-muted-inverse);
+}
+.tk-faq--light .tk-faq__answer { color: var(--text-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tk-faq__panel { transition: none; }
+}
+
+/* --------------------------------------------------------------------------
+   NewsletterBand
+   -------------------------------------------------------------------------- */
+.tk-newsletter {
+  background: var(--brand-amber);
+  color: #000;
+  padding: 56px 64px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  font-family: var(--font-body);
+}
+.tk-newsletter__copy { flex: 1 1 320px; }
+.tk-newsletter__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+.tk-newsletter__sub {
+  margin: 10px 0 0;
+  font-size: 15.5px;
+  line-height: 1.55;
+  max-width: 480px;
+}
+.tk-newsletter__form {
+  flex: 1 1 380px;
+  display: flex;
+  gap: 12px;
+}
+.tk-newsletter__input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 16px;
+  font-size: 15px;
+  font-family: var(--font-body);
+  border: 1px solid transparent;
+  border-radius: var(--radius-button);
+  background: #fff;
+  color: #000;
+}
+.tk-newsletter__input:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Shown instead of the form while FORM_ENDPOINT is still the placeholder — the
+   band must never look like it is collecting addresses it cannot receive. */
+.tk-newsletter__fallback {
+  flex: 1 1 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.tk-newsletter__fallback-note {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+/* --------------------------------------------------------------------------
+   Lit-edge gradient borders (from ds-extensions.css)
+   1px gradient border, brightest at top, fading out by the bottom.
+   -------------------------------------------------------------------------- */
+.lit-wrap,
+.lit-wrap-light {
+  position: relative;
+  border-radius: 13px;
+  padding: 1px;
+  display: flex;
+}
+.lit-wrap {
+  background: linear-gradient(180deg, rgba(151, 208, 255, 0.75), rgba(149, 49, 255, 0.28) 55%, rgba(149, 49, 255, 0.05));
+}
+.lit-wrap-light {
+  background: linear-gradient(180deg, rgba(0, 101, 255, 0.55), rgba(149, 49, 255, 0.22) 60%, rgba(149, 49, 255, 0.06));
+}
+.lit-wrap > *,
+.lit-wrap-light > * {
+  flex: 1;
+  border-radius: 12px;
+  min-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Stat — proof-number tile
+   -------------------------------------------------------------------------- */
+.tk-stat {
+  padding: 32px 24px;
+  text-align: center;
+  border-radius: 12px;
+  height: 100%;
+}
+.tk-stat--light { background: #fff; }
+.tk-stat--dark { background: var(--surface-card-on-dark); }
+
+.tk-stat__value {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 1.1;
+  color: var(--action-blue);
+}
+.tk-stat__label {
+  font-size: 14px;
+  margin-top: 6px;
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+.tk-stat--light .tk-stat__label { color: var(--text-muted); }
+.tk-stat--dark .tk-stat__label { color: var(--text-muted-inverse); }
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .tk-heading__title { font-size: clamp(28px, 5.6vw, 44px); }
+  .tk-newsletter { padding: 40px 28px; gap: 28px; }
+  .tk-newsletter__title { font-size: clamp(26px, 6vw, 40px); }
+}
+
+@media (max-width: 560px) {
+  .tk-container { padding: 0 20px; }
+  .tk-newsletter { padding: 32px 20px; }
+  .tk-newsletter__form { flex-direction: column; }
+  .tk-newsletter__form .tk-btn { justify-content: center; }
+  .tk-service-card { padding: 24px; min-height: 0; }
+  .tk-project-card { padding: 22px; }
+  .tk-faq__button { padding: 16px; font-size: 16px; }
+  .tk-faq__answer { padding: 0 16px 16px; }
+  .tk-stat__value { font-size: 38px; }
+}

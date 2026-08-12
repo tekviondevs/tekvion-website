@@ -1,0 +1,520 @@
+/* ==========================================================================
+   Home page sections
+   Ported from the design export (hero.jsx, sections-a.jsx, sections-b.jsx).
+   Everything here is scoped to `.home-*` so it cannot leak into other routes.
+   Breakpoints are ours — the mockup is desktop-only. Nothing may overflow
+   horizontally at 360px.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+.home-hero {
+  background: var(--surface-dark);
+  color: var(--text-body-inverse);
+  /* The 500px ring and the 108%-wide render deliberately bleed past the
+     container; the section clips them instead of scrolling the page. */
+  overflow: hidden;
+}
+
+.home-hero__inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 48px;
+  min-height: 560px;
+}
+
+.home-hero__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading-hero);
+  font-size: clamp(32px, 6.4vw, 54px);
+  line-height: var(--leading-tight);
+}
+
+/* Keeps the amber underline on one continuous stroke. */
+.home-hero__nowrap {
+  white-space: nowrap;
+}
+
+.home-hero__intro {
+  margin: 24px 0 0;
+  max-width: 540px;
+  font-size: 17px;
+  line-height: var(--leading-body);
+  color: var(--text-muted-inverse);
+}
+
+.home-hero__actions {
+  margin-top: 36px;
+}
+
+.home-hero__art {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+}
+
+.home-hero__rings {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.home-hero__rings span {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(24, 215, 217, 0.22);
+}
+
+.home-hero__rings span:nth-child(1) {
+  width: 300px;
+  height: 300px;
+}
+
+.home-hero__rings span:nth-child(2) {
+  width: 400px;
+  height: 400px;
+  border-color: rgba(24, 215, 217, 0.15);
+}
+
+.home-hero__rings span:nth-child(3) {
+  width: 500px;
+  height: 500px;
+  border-color: rgba(24, 215, 217, 0.08);
+}
+
+.home-hero__mark {
+  position: relative;
+  width: 108%;
+  max-width: none;
+  height: auto;
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   What We Offer — sits directly under the hero, so it keeps a short top pad
+   -------------------------------------------------------------------------- */
+.home-offer {
+  padding: 32px 0 var(--section-pad-y);
+}
+
+.home-offer__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* --------------------------------------------------------------------------
+   Why Choose
+   -------------------------------------------------------------------------- */
+.home-why__inner {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* The panel reads first visually but the heading comes first in the DOM. */
+.home-why__proof {
+  order: -1;
+}
+
+.home-why__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: clamp(28px, 4.4vw, 40px);
+  line-height: var(--leading-tight);
+}
+
+/* Identity gradient on the wordmark only — never on a surface or control. */
+.home-why__wordmark {
+  background: var(--gradient-identity-wordmark);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.home-why__intro {
+  margin: 18px 0 24px;
+  font-size: var(--text-body-size);
+  line-height: var(--leading-body);
+}
+
+.home-why__points {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 20px 24px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+}
+
+.home-why__point {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14.5px;
+  line-height: 1.4;
+}
+
+.home-why__check {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--brand-purple);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Proof panel replaces the mockup's grey "team photo placeholder" well.
+   1px gaps over a hairline background draw the grid rules. */
+.home-why__proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--border-hairline);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.home-why__proof-grid .tk-stat {
+  padding: 22px 12px;
+}
+
+.home-why__proof-grid .tk-stat__value {
+  font-size: 30px;
+}
+
+.home-why__proof-grid .tk-stat__label {
+  font-size: 13px;
+}
+
+.home-why__proof-note {
+  margin-top: 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Projects
+   -------------------------------------------------------------------------- */
+.home-projects {
+  padding: 0 0 var(--section-pad-y);
+}
+
+.home-projects__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.home-projects__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 4.4vw, 40px);
+  font-weight: 400;
+}
+
+.home-projects__title b {
+  font-weight: 800;
+}
+
+.home-projects__aside {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: var(--text-body-size);
+}
+
+.home-projects__arrow {
+  position: relative;
+  overflow: hidden;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.band--light .home-projects__arrow:hover {
+  color: #fff;
+}
+
+.home-projects__arrow span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--dur-base) var(--ease-standard);
+}
+
+.home-projects__arrow .pa2 {
+  transform: translateX(-140%);
+}
+
+.home-projects__arrow:hover .pa1,
+.home-projects__arrow:focus-visible .pa1 {
+  transform: translateX(140%);
+}
+
+.home-projects__arrow:hover .pa2,
+.home-projects__arrow:focus-visible .pa2 {
+  transform: translateX(0);
+}
+
+.home-projects__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* --------------------------------------------------------------------------
+   Industries — gradient band, gradient-filled cards
+   -------------------------------------------------------------------------- */
+.tk-service-card.home-industry-card {
+  min-height: 120px;
+  background: linear-gradient(180deg, #0065ff 0%, #9531ff 100%);
+}
+
+/* The card repaints the surface, so the muted inverse token drops to 3.2:1 on
+   this gradient. Solid white is 4.9:1 at the blue end, 6.6:1 at the purple. */
+.home-industry-card .tk-service-card__copy {
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Timeline / How We Work
+   -------------------------------------------------------------------------- */
+.home-timeline__defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.home-timeline__list {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.home-timeline__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-timeline__card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  background: var(--surface-card-on-dark);
+  border-radius: var(--radius-card);
+  padding: 28px 32px;
+  width: 62%;
+  align-self: flex-start;
+}
+
+.home-timeline__item--right .home-timeline__card {
+  align-self: flex-end;
+}
+
+.home-timeline__number {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--action-blue);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: 19px;
+}
+
+.home-timeline__step-title {
+  margin: 2px 0 10px;
+  font-family: var(--font-heading);
+  font-size: 21px;
+  font-weight: var(--weight-heading);
+}
+
+.home-timeline__step-copy {
+  margin: 0;
+  font-size: 15px;
+  line-height: var(--leading-body);
+  color: var(--text-muted-inverse);
+}
+
+.home-timeline__connector {
+  width: 150px;
+  height: 66px;
+  margin: -14px 0 -14px 44%;
+  align-self: flex-start;
+  overflow: visible;
+}
+
+.home-timeline__connector--flip {
+  align-self: flex-end;
+  margin: -14px 44% -14px 0;
+  transform: scaleX(-1);
+}
+
+/* --------------------------------------------------------------------------
+   FAQ — follows the black timeline, so the top pad is trimmed
+   -------------------------------------------------------------------------- */
+.home-faq {
+  padding: 24px 0 var(--section-pad-y);
+}
+
+.home-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 44px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .home-hero__inner {
+    gap: 32px;
+    min-height: 0;
+  }
+  .home-hero__art {
+    min-height: 440px;
+  }
+  .home-why__inner {
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Hero art stacks below the copy. */
+  .home-hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .home-hero__art {
+    min-height: 380px;
+    order: 1;
+  }
+  .home-hero__mark {
+    width: 100%;
+    max-width: 420px;
+  }
+  .home-hero__rings span:nth-child(1) {
+    width: 230px;
+    height: 230px;
+  }
+  .home-hero__rings span:nth-child(2) {
+    width: 300px;
+    height: 300px;
+  }
+  .home-hero__rings span:nth-child(3) {
+    width: 370px;
+    height: 370px;
+  }
+
+  .home-why__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+  .home-why__proof {
+    order: 0;
+  }
+
+  /* Timeline goes single column: full-width cards, no connectors. */
+  .home-timeline__card,
+  .home-timeline__item--right .home-timeline__card {
+    width: 100%;
+    align-self: stretch;
+  }
+  .home-timeline__connector {
+    display: none;
+  }
+  .home-timeline__list {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .home-hero__art {
+    min-height: 300px;
+  }
+  .home-hero__rings span:nth-child(1) {
+    width: 180px;
+    height: 180px;
+  }
+  .home-hero__rings span:nth-child(2) {
+    width: 240px;
+    height: 240px;
+  }
+  .home-hero__rings span:nth-child(3) {
+    width: 300px;
+    height: 300px;
+  }
+  .home-hero__intro {
+    font-size: 16px;
+  }
+
+  .home-why__points {
+    padding: 18px;
+    gap: 12px 18px;
+  }
+  .home-why__proof-grid .tk-stat__value {
+    font-size: 26px;
+  }
+
+  .home-projects__aside {
+    font-size: 15px;
+  }
+
+  .home-timeline__card {
+    padding: 22px 20px;
+    gap: 14px;
+  }
+  .home-timeline__number {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}

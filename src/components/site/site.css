@@ -1,0 +1,496 @@
+/* ==========================================================================
+   Site chrome — nav, footer, closing CTA band, trust band, breadcrumbs.
+   Imported once from src/app/globals.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Nav
+   -------------------------------------------------------------------------- */
+.tk-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: linear-gradient(90deg, #0065FF, #4B2FE0);
+  box-shadow: none;
+  transition: box-shadow 200ms ease;
+}
+
+.tk-nav[data-scrolled='true'] {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.tk-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: var(--nav-height);
+}
+
+.tk-nav__logo {
+  display: flex;
+  flex: none;
+  align-items: center;
+}
+
+.tk-nav__logo img {
+  height: 34px;
+  width: auto;
+}
+
+.tk-nav__links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.tk-nav__link {
+  font-size: 15px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color var(--dur-fast) var(--ease-standard);
+  white-space: nowrap;
+}
+
+.tk-nav__link:hover {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.6);
+}
+
+.tk-nav__link[aria-current='page'] {
+  color: #fff;
+  /* Amber is emphasis only, never an interactive or active state. On the
+     blue-purple bar a solid white rule reads as "current" against the 60%
+     white hover rule above. */
+  border-bottom-color: #fff;
+}
+
+.tk-nav__cta {
+  display: flex;
+  flex: none;
+}
+
+.tk-nav__toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-button);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  flex: none;
+}
+
+/* Mobile drawer */
+.tk-nav__scrim {
+  position: fixed;
+  inset: var(--nav-height) 0 0;
+  background: rgba(0, 0, 0, 0.55);
+  border: none;
+  cursor: pointer;
+  z-index: 98;
+}
+
+.tk-nav__drawer {
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: var(--ink-black);
+  border-top: 1px solid var(--border-hairline-inverse);
+  padding: 20px;
+  max-height: calc(100dvh - var(--nav-height));
+  overflow-y: auto;
+}
+
+.tk-nav__drawer-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.tk-nav__drawer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 4px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-hairline-inverse);
+}
+
+.tk-nav__drawer-link[aria-current='page'] {
+  color: #fff;
+  font-weight: 700;
+}
+
+.tk-nav__drawer-cta {
+  margin-top: 22px;
+}
+
+.tk-nav__drawer-contact {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14.5px;
+  color: var(--text-muted-inverse);
+}
+
+.tk-nav__drawer-contact a {
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 1080px) {
+  .tk-nav__links,
+  .tk-nav__cta {
+    display: none;
+  }
+  .tk-nav__toggle {
+    display: inline-flex;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Breadcrumbs
+   -------------------------------------------------------------------------- */
+.tk-breadcrumbs {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.tk-breadcrumbs__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.tk-breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tk-breadcrumbs__sep {
+  opacity: 0.5;
+  display: inline-flex;
+}
+
+.tk-breadcrumbs a {
+  text-decoration: none;
+}
+
+.tk-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.tk-breadcrumbs--on-dark a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tk-breadcrumbs--on-dark [aria-current='page'] {
+  color: #fff;
+}
+
+.tk-breadcrumbs--on-light a {
+  color: var(--text-muted);
+}
+
+.tk-breadcrumbs--on-light [aria-current='page'] {
+  color: var(--text-body);
+}
+
+/* --------------------------------------------------------------------------
+   Trusted by band
+   -------------------------------------------------------------------------- */
+.tk-trusted__names {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 44px;
+}
+
+.tk-trusted__name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px 14px;
+  border-radius: var(--radius-card);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.3;
+  min-height: 64px;
+}
+
+.tk-trusted--dark .tk-trusted__name {
+  background: var(--surface-card-on-dark);
+  color: #fff;
+  border: 1px solid var(--border-hairline-inverse);
+}
+
+.tk-trusted--light .tk-trusted__name {
+  background: #fff;
+  color: #000;
+  border: 1px solid var(--border-hairline);
+}
+
+.tk-trusted__stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.tk-trusted__note {
+  margin-top: 24px;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .tk-trusted__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .tk-trusted__names {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  .tk-trusted__name {
+    font-size: 13.5px;
+    min-height: 56px;
+    padding: 12px 10px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Closing CTA band
+   -------------------------------------------------------------------------- */
+.tk-page-cta {
+  background: var(--brand-purple);
+  color: #fff;
+  padding: var(--section-pad-y) 0;
+}
+
+.tk-page-cta__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(28px, 5vw, 48px);
+  line-height: 1.15;
+}
+
+.tk-page-cta__sub {
+  margin: 12px 0 24px;
+  font-size: 16px;
+  max-width: 62ch;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.tk-footer {
+  background: #000;
+  color: #fff;
+  border-top: 1px solid var(--border-hairline-inverse);
+}
+
+.tk-footer__main {
+  padding: 64px 0 32px;
+}
+
+.tk-footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 0.85fr 0.75fr 1.05fr;
+  gap: 40px;
+}
+
+.tk-footer__brand img {
+  height: 30px;
+  width: auto;
+}
+
+.tk-footer__positioning {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted-inverse);
+  max-width: 280px;
+  margin-top: 16px;
+}
+
+.tk-footer__socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tk-footer__social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Icon-only links with no visible label — 44px minimum touch target. */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-hairline-inverse);
+  color: #fff;
+  transition: background var(--dur-fast) var(--ease-standard);
+}
+
+.tk-footer__social:hover {
+  background: var(--action-blue);
+  color: #fff;
+}
+
+.tk-footer__heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 14px;
+  color: #fff;
+}
+
+.tk-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.tk-footer__links a,
+.tk-footer__contact a {
+  font-size: 14px;
+  color: var(--text-muted-inverse);
+  text-decoration: none;
+}
+
+.tk-footer__links a:hover,
+.tk-footer__contact a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.tk-footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-muted-inverse);
+}
+
+.tk-footer__contact-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.tk-footer__contact-row svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--action-blue);
+}
+
+.tk-footer__bottom {
+  border-top: 1px solid var(--border-hairline-inverse);
+  margin-top: 44px;
+  padding-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-muted-inverse);
+}
+
+.tk-footer__fineprint {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 10px;
+  max-width: 70ch;
+}
+
+@media (max-width: 1180px) {
+  .tk-footer__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+  }
+  .tk-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 780px) {
+  .tk-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .tk-footer__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tk-footer__main {
+    padding: 48px 0 28px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   404
+   -------------------------------------------------------------------------- */
+.tk-404 {
+  min-height: calc(100dvh - var(--nav-height) - 80px);
+  display: flex;
+  align-items: center;
+  padding: 96px 0;
+}
+
+/* The identity gradient is a logo/wordmark treatment only — "404" is neither,
+   so the numerals take the interactive colour instead. */
+.tk-404__code {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(64px, 14vw, 128px);
+  line-height: 1;
+  color: var(--action-blue);
+}
+
+.tk-404__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: 36px;
+  padding: 0;
+  list-style: none;
+}
+
+.tk-404__links a {
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.tk-404__links a:hover {
+  border-bottom-color: #fff;
+}

@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Tekvion Innovations — design tokens
+   Copied verbatim from the bound design system export:
+   _ds/tekvion-design-system-040ce9f4-4a15-4353-a77f-3f99ff78dc0a/tokens/
+     colors.css · layout.css · typography.css · effects.css
+   The @font-face block from tokens/fonts.css is intentionally omitted —
+   next/font/google loads Plus Jakarta Sans and DM Sans in src/app/layout.tsx
+   and assigns them to --font-heading / --font-body on <html>.
+   Do not re-derive these values; edit the design system instead.
+   ========================================================================== */
+
+/* --- tokens/colors.css --------------------------------------------------- */
+:root{
+/* Base palette — every colour has one job */
+--brand-blue:#1E2EDD; /* identity: logo gradient start; logo only */
+--brand-cyan:#18D7D9; /* identity: logo gradient end; logo only */
+--brand-purple:#6900FD; /* surface: full-bleed feature + conversion bands only */
+--brand-amber:#FFAD00; /* emphasis: heading underlines, highlight rules, newsletter band */
+--action-blue:#0065FF; /* interactive: buttons, links, active states. Nothing else */
+--ink-black:#000000; /* surface: dark sections. Pure black */
+--surface-white:#FFFFFF; /* surface: light sections. Pure white */
+/* Identity gradients — logo/mark ONLY, never a background/button/card */
+--gradient-identity:linear-gradient(69deg,#1E2EDD 0%,#18D7D9 100%); /* @kind color */
+--gradient-identity-wordmark:linear-gradient(112deg,#1E2EDD 0%,#18D7D9 100%); /* @kind color */
+/* Semantic aliases */
+--surface-page:var(--surface-white);
+--surface-dark:var(--ink-black);
+--surface-band:var(--brand-purple);
+--surface-newsletter:var(--brand-amber);
+--surface-card-on-dark:#1C1C1E; /* dark-section card/pill fill (tint of black) */
+--surface-card-on-purple:rgba(255,255,255,0.10); /* card tint on purple bands */
+--text-body:#000000;
+--text-body-inverse:#FFFFFF;
+--text-muted:rgba(0,0,0,0.62);
+--text-muted-inverse:rgba(255,255,255,0.72);
+--interactive:var(--action-blue);
+--interactive-hover:#0057DB;
+--link:var(--action-blue);
+--emphasis-rule:var(--brand-amber);
+--border-hairline:rgba(0,0,0,0.16);
+--border-hairline-inverse:rgba(255,255,255,0.22);
+}
+
+/* --- tokens/layout.css --------------------------------------------------- */
+:root{
+/* Spacing (px scale observed on tekvion.net) */
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;--space-9:96px;--space-10:128px;
+--section-pad-y:var(--space-9);
+--card-pad:var(--space-6);
+--container-max:1280px;
+/* Radii */
+--radius-card:12px;
+--radius-button:8px;
+--radius-pill:999px;
+--radius-chip:6px;
+/* Shadows — used sparingly; sections rely on pure black/white contrast */
+--shadow-card:0 8px 24px rgba(0,0,0,0.08);
+--shadow-card-dark:0 8px 24px rgba(0,0,0,0.45);
+/* Motion */
+--ease-standard:cubic-bezier(.4,0,.2,1); /* @kind other */
+--dur-fast:150ms; /* @kind other */
+--dur-base:250ms; /* @kind other */
+}
+
+/* --- tokens/typography.css ----------------------------------------------- */
+:root{
+/* SUBSTITUTION — user delegated the call (2026-08-12): nearest Google Fonts
+   matches to the site's grotesque. Swap when licensed families are supplied. */
+--font-heading:'Plus Jakarta Sans',system-ui,-apple-system,"Segoe UI",sans-serif;
+--font-body:'DM Sans',system-ui,-apple-system,"Segoe UI",sans-serif;
+--weight-heading:700;
+--weight-heading-hero:800;
+--weight-subhead:600;
+--weight-body:400;
+--weight-medium:500;
+/* Size ramp (from site measurements; confirm with brand) */
+--text-hero:56px;
+--text-h2:44px;
+--text-h3:24px;
+--text-card-title:20px;
+--text-body-size:16px;
+--text-small:14px;
+--text-badge:12px;
+--leading-tight:1.15;
+--leading-body:1.6;
+}
+
+/* --- tokens/effects.css -------------------------------------------------- */
+/* Shared hover-animation keyframes (inline styles can't declare keyframes) */
+@keyframes tk-shine{from{opacity:0;left:0}50%{opacity:1}to{opacity:0;left:100%}}

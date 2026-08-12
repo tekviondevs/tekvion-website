@@ -1,0 +1,484 @@
+/* ==========================================================================
+   Blog — index and post pages.
+   Imported by src/app/blog/page.tsx and src/app/blog/[slug]/page.tsx.
+   Long-form article typography (.prose, .toc, .callout, .table-wrap) lives in
+   globals.css; this file adds only what the blog surfaces need on top.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Category panel
+
+   Posts ship without photography, so every card and highlight gets a branded
+   gradient panel instead of an empty grey well. It is the section palette's
+   own blue-to-purple gradient — the one the DS uses for generated wells — and
+   it is identical for every category. Cards never carry a decorative gradient
+   of their own; the category is communicated by the Badge.
+   -------------------------------------------------------------------------- */
+.tk-cat-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 28px;
+  min-height: 100%;
+  background: linear-gradient(135deg, #0065FF 0%, #6900FD 100%);
+}
+
+.tk-cat-panel__label {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  /* Solid white at 700: 0.85 alpha over the blue end of the gradient is 3.93:1,
+     below AA for 12px text. */
+  font-weight: 700;
+  color: #fff;
+}
+
+.tk-cat-panel__title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(20px, 2.4vw, 30px);
+  line-height: 1.15;
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Avatar — portrait over a branded initials fallback
+   -------------------------------------------------------------------------- */
+.tk-avatar {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  background: var(--gradient-identity);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.tk-avatar__initials {
+  line-height: 1;
+}
+
+.tk-avatar__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   Byline
+   -------------------------------------------------------------------------- */
+.tk-byline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.tk-byline__author {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.tk-byline__author a {
+  text-decoration: none;
+}
+.tk-byline__author a:hover {
+  text-decoration: underline;
+}
+
+.tk-byline__role {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.tk-byline__facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 3px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+.band--dark .tk-byline__role,
+.band--dark .tk-byline__facts {
+  color: var(--text-muted-inverse);
+}
+
+/* --------------------------------------------------------------------------
+   Blog index — hero
+   -------------------------------------------------------------------------- */
+.tk-blog-hero__title {
+  margin-top: 22px;
+  max-width: 18ch;
+}
+
+.tk-blog-hero .lead {
+  max-width: 62ch;
+}
+
+.tk-blog-hero__meta {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-muted-inverse);
+}
+
+/* --------------------------------------------------------------------------
+   Blog index — latest-post highlight
+   -------------------------------------------------------------------------- */
+.tk-featured__eyebrow {
+  margin-bottom: 16px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted-inverse);
+}
+
+.tk-featured__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  background: #0B0B14;
+  border-radius: 12px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.tk-featured__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 32px;
+}
+
+.tk-featured__title {
+  margin: 0;
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.2;
+}
+
+.tk-featured__title a {
+  color: #fff;
+  text-decoration: none;
+}
+.tk-featured__title a:hover {
+  text-decoration: underline;
+}
+
+.tk-featured__excerpt {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-muted-inverse);
+}
+
+.tk-featured__byline {
+  margin-top: 2px;
+}
+
+.tk-featured__byline .tk-byline__role,
+.tk-featured__byline .tk-byline__facts {
+  color: var(--text-muted-inverse);
+}
+
+.tk-featured__byline .tk-byline__author a {
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Blog index — category filter
+   -------------------------------------------------------------------------- */
+.tk-blog-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tk-blog-filter__btn {
+  display: inline-flex;
+  align-items: center;
+  /* 44px minimum touch target; horizontal padding unchanged. */
+  min-height: 44px;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-pill);
+  background: #fff;
+  color: var(--text-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard);
+}
+
+.tk-blog-filter__btn:hover {
+  border-color: var(--action-blue);
+  color: var(--action-blue);
+}
+
+.tk-blog-filter__btn--on,
+.tk-blog-filter__btn--on:hover {
+  background: var(--action-blue);
+  border-color: var(--action-blue);
+  color: #fff;
+}
+
+.tk-blog-filter__count {
+  font-size: 12px;
+  opacity: 0.72;
+}
+
+.tk-blog-filter__status {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.tk-post-grid {
+  margin-top: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   Post — hero
+   -------------------------------------------------------------------------- */
+.tk-post-hero__inner {
+  max-width: 976px;
+  margin: 0 auto;
+}
+
+.tk-post-hero__badge {
+  margin-top: 24px;
+}
+
+.tk-post-hero__title {
+  margin-top: 16px;
+  font-size: clamp(30px, 5.2vw, 46px);
+  line-height: 1.18;
+}
+
+.tk-post-hero .lead {
+  margin-top: 18px;
+}
+
+/* --------------------------------------------------------------------------
+   Post — article layout with the sticky contents rail
+   -------------------------------------------------------------------------- */
+.tk-post__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 660px) 260px;
+  gap: 56px;
+  align-items: start;
+  justify-content: center;
+}
+
+.tk-post__main {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+/* Contents comes first in the DOM (it is a navigation aid) and is placed into
+   the right-hand rail on desktop. */
+.tk-post__toc {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+  max-height: calc(100vh - var(--nav-height) - 48px);
+  overflow-y: auto;
+}
+
+.tk-post__tags {
+  list-style: none;
+  padding: 0;
+  margin: 44px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tk-post__back {
+  margin-top: 32px;
+  font-size: 15px;
+}
+
+/* --------------------------------------------------------------------------
+   Post — code blocks (styled with CSS only; no highlighter dependency)
+   -------------------------------------------------------------------------- */
+.prose .code-block {
+  position: relative;
+}
+
+.prose .code-block__lang {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+.prose .code-block pre {
+  margin: 0;
+  padding-top: 34px;
+}
+
+.prose .callout__body {
+  margin: 0;
+}
+
+.prose .table-wrap:focus-visible,
+.prose pre:focus-visible {
+  outline: 2px solid var(--action-blue);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Post — author card
+   -------------------------------------------------------------------------- */
+.tk-author {
+  margin-top: 48px;
+}
+
+.tk-author__eyebrow {
+  margin-bottom: 14px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tk-author__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.tk-author__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tk-author__name {
+  margin: 0;
+  font-size: 20px;
+}
+
+.tk-author__role {
+  margin: 2px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.tk-author__bio {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+.tk-author__focus {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tk-author__link {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .tk-post-hero__inner {
+    max-width: 720px;
+  }
+  .tk-post__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .tk-post__main,
+  .tk-post__toc {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .tk-post__toc {
+    position: static;
+    max-height: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .tk-featured__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tk-cat-panel {
+    min-height: 180px;
+    padding: 24px;
+  }
+  .tk-featured__copy {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 560px) {
+  .tk-blog-hero__title {
+    max-width: none;
+  }
+  .tk-byline {
+    gap: 12px;
+  }
+  .tk-blog-filter__btn {
+    padding: 8px 13px;
+    font-size: 13px;
+  }
+  .tk-author__inner {
+    padding: 22px;
+  }
+  .tk-author__head {
+    align-items: flex-start;
+  }
+  .prose .code-block pre {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

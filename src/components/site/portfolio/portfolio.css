@@ -1,0 +1,377 @@
+/* ==========================================================================
+   Portfolio index (/portfolio) and case studies (/portfolio/[slug])
+   Imported by the two page files rather than globals.css — this area owns it.
+   Everything here must survive a 360px viewport with no horizontal scroll.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Index hero
+   -------------------------------------------------------------------------- */
+.tk-pf-hero__lead {
+  margin-top: 20px;
+  max-width: 62ch;
+}
+
+.tk-pf-hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-top: 28px;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: var(--text-muted-inverse);
+}
+
+.tk-pf-hero__facts li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tk-pf-hero__facts svg {
+  color: var(--action-blue);
+  flex: none;
+}
+
+/* --------------------------------------------------------------------------
+   Proof band
+   -------------------------------------------------------------------------- */
+.tk-pf-proof__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.tk-pf-proof__note {
+  margin-top: 24px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Filter bar
+   -------------------------------------------------------------------------- */
+.tk-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.tk-filter__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 16px;
+}
+
+.tk-filter__label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted-inverse);
+  flex: none;
+  min-width: 68px;
+}
+
+.tk-filter__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+
+.tk-filter__chip {
+  /* 44px minimum touch target; horizontal padding unchanged. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-hairline-inverse);
+  background: var(--surface-card-on-dark);
+  color: var(--text-muted-inverse);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  line-height: 1.3;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard);
+}
+
+.tk-filter__chip:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.tk-filter__chip[aria-pressed='true'] {
+  background: var(--action-blue);
+  border-color: var(--action-blue);
+  color: #fff;
+  font-weight: 500;
+}
+
+.tk-filter__status-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-hairline-inverse);
+}
+
+.tk-filter__status {
+  font-size: 14px;
+  color: var(--text-muted-inverse);
+  margin: 0;
+}
+
+.tk-filter__reset {
+  /* Bare text button — pad it out to a 44px target. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 11px 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--action-blue);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tk-filter__reset:hover {
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Project grid
+   -------------------------------------------------------------------------- */
+.tk-pf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.tk-pf-grid > li {
+  display: flex;
+  min-width: 0;
+}
+
+.tk-pf-grid > li > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.tk-pf-empty {
+  margin-top: 32px;
+  padding: 40px 24px;
+  border: 1px dashed var(--border-hairline-inverse);
+  border-radius: var(--radius-card);
+  text-align: center;
+  color: var(--text-muted-inverse);
+  font-size: 15px;
+}
+
+.tk-pf-legend {
+  margin-top: 28px;
+  font-size: 13.5px;
+  color: var(--text-muted-inverse);
+}
+
+/* --------------------------------------------------------------------------
+   Case study hero
+   -------------------------------------------------------------------------- */
+.tk-cs-hero__badge {
+  margin-top: 24px;
+}
+
+.tk-cs-hero__title {
+  margin-top: 18px;
+}
+
+.tk-cs-hero__descriptor {
+  margin-top: 12px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(17px, 2.4vw, 21px);
+  color: #fff;
+}
+
+.tk-cs-hero__summary {
+  margin-top: 20px;
+  max-width: 68ch;
+}
+
+.tk-cs-hero__actions {
+  margin-top: 32px;
+}
+
+/* Meta strip */
+.tk-cs-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 40px;
+  padding: 0;
+}
+
+.tk-cs-meta__item {
+  background: var(--surface-card-on-dark);
+  border: 1px solid var(--border-hairline-inverse);
+  border-radius: 10px;
+  padding: 14px 18px;
+  min-width: 0;
+}
+
+.tk-cs-meta__label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted-inverse);
+}
+
+.tk-cs-meta__value {
+  margin-top: 4px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+
+.tk-cs-meta__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.tk-cs-meta__link:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Case study body
+   -------------------------------------------------------------------------- */
+.tk-cs-body .prose > *:first-child {
+  margin-top: 0;
+}
+
+/* Highlights */
+.tk-cs-highlights__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.tk-cs-highlights__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px 20px;
+  border-radius: var(--radius-card);
+  background: var(--surface-card-on-dark);
+  border: 1px solid var(--border-hairline-inverse);
+  font-size: 15px;
+  line-height: 1.55;
+  color: #fff;
+  min-width: 0;
+}
+
+.tk-cs-highlights__item svg {
+  color: var(--action-blue);
+  flex: none;
+  margin-top: 3px;
+}
+
+/* Services used */
+.tk-cs-services__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+
+/* More work */
+.tk-cs-more__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.tk-cs-more__grid > li {
+  display: flex;
+  min-width: 0;
+}
+
+.tk-cs-more__grid > li > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.tk-cs-more__cta {
+  margin-top: 32px;
+  justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .tk-pf-grid,
+  .tk-cs-more__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .tk-pf-proof__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .tk-pf-grid,
+  .tk-cs-more__grid,
+  .tk-cs-highlights__list,
+  .tk-cs-services__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tk-filter__row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .tk-filter__label {
+    min-width: 0;
+  }
+  .tk-cs-meta {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .tk-pf-proof__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tk-filter__chip {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
