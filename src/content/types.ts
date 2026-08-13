@@ -62,6 +62,8 @@ export interface TeamMember {
   bio: string;
   focus: string[];
   linkedin?: string;
+  /** Personal portfolio site, linked from the team card when present. */
+  portfolio?: string;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -71,6 +73,7 @@ export interface TeamMember {
 export type ServiceCategory =
   | 'Design'
   | 'Development'
+  | 'Automation & CRM'
   | 'Growth & Optimisation'
   | 'Platform & Support';
 

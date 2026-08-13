@@ -548,8 +548,12 @@ export const designServices: Service[] = [
       'landing-page-development',
       'ui-ux-design',
     ],
-    relatedProjectSlugs: ['wuraka', 'loofys', 'inkgenx', 'wegets'],
-    featured: true,
+    /* Deliberately empty. We have no standalone graphic-design portfolio to
+       show — the visual work in the portfolio was produced inside website
+       builds, and listing those builds here would claim design deliverables
+       the project records do not support. The service page drops its
+       "Work We Have Shipped" band entirely when this list is empty. */
+    relatedProjectSlugs: [],
   },
 
   /* ------------------------------------------------------------------ */
@@ -680,6 +684,8 @@ export const designServices: Service[] = [
       'ui-ux-design',
       'landing-page-development',
     ],
-    relatedProjectSlugs: ['inkgenx', 'mocki', 'cloverfour', 'loofys'],
+    /* Only the projects whose own records claim `brand-identity-design`, so
+       the service page and the case-study "services used" strips agree. */
+    relatedProjectSlugs: ['your-brain-coach-d', 'loofys'],
   },
 ];

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Container, Underline } from '@/components/ds';
+import { CALENDLY_URL } from '@/content/company';
 
 export const metadata: Metadata = {
   title: 'Page not found',
@@ -38,7 +39,10 @@ export default function NotFound() {
           ))}
         </ul>
         <div className="cluster mt-8">
-          <Button href="/" size="lg" arrow>
+          <Button href={CALENDLY_URL} size="lg" arrow>
+            Book a Call<span className="sr-only"> (opens in a new tab)</span>
+          </Button>
+          <Button href="/" size="lg" variant="ghost-light">
             Back to home
           </Button>
           <Button href="/contact" size="lg" variant="ghost-light">

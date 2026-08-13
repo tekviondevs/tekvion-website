@@ -21,7 +21,7 @@ const CRAWL_HINTS: Record<RouteKind, CrawlHint> = {
   home: { changeFrequency: 'weekly', priority: 1 },
   // Index pages gain entries as the portfolio and blog grow.
   pillar: { changeFrequency: 'weekly', priority: 0.9 },
-  // Contact and quote rarely change but must never be deprioritised for crawl.
+  // Contact rarely changes but must never be deprioritised for crawl.
   conversion: { changeFrequency: 'monthly', priority: 0.8 },
   // The 29 service pages are the commercial core of the site.
   service: { changeFrequency: 'monthly', priority: 0.8 },

@@ -44,6 +44,8 @@ function Connector({ id, flip }: { id: string; flip: boolean }) {
 }
 
 export function ProcessTimeline({ steps, on = 'dark', idPrefix, className }: ProcessTimelineProps) {
+  if (steps.length === 0) return null;
+
   return (
     <ol className={cx('tk-svc-timeline', `tk-svc-timeline--${on}`, className)}>
       {steps.map((step, index) => (

@@ -12,6 +12,8 @@ export interface ServiceFeatureGridProps {
 }
 
 export function ServiceFeatureGrid({ features, className }: ServiceFeatureGridProps) {
+  if (features.length === 0) return null;
+
   return (
     <div className={cx('tk-svc-features', className)}>
       {features.map((feature) => (

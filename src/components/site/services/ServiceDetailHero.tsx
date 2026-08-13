@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Service } from '@/content/types';
 import { Badge, Button, Icon, Underline } from '@/components/ds';
+import { CALENDLY_URL } from '@/content/company';
 import { SectionBand } from '@/components/site/SectionBand';
 import { Breadcrumbs } from '@/components/site/Breadcrumbs';
 import { serviceIcon, splitHeroTitle } from './helpers';
@@ -48,8 +49,8 @@ export function ServiceDetailHero({ service, titleId }: ServiceDetailHeroProps) 
       <p className="tk-svc-hero__intro">{service.heroIntro}</p>
 
       <div className="cluster tk-svc-hero__actions">
-        <Button href="/quote" size="lg" arrow>
-          Get a Free Quote
+        <Button href={CALENDLY_URL} size="lg" arrow>
+          Book a Call<span className="sr-only"> (opens in a new tab)</span>
         </Button>
         <Button href="/portfolio" size="lg" variant="ghost-light">
           View Our Work

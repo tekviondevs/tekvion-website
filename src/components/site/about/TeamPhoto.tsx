@@ -39,6 +39,10 @@ export function TeamPhoto({ src, name, role, initials }: TeamPhotoProps) {
   }
 
   return (
+    /* Deliberately a bare <img>: the retry-then-initials fallback needs the raw
+       onError event, and next.config.mjs sets images.unoptimized, so next/image
+       would add a wrapper without adding any optimisation. */
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={current}
       alt={`${name}, ${role} at Tekvion Innovations`}

@@ -581,7 +581,7 @@ export const platformServices: Service[] = [
       {
         question: 'Do you build integrations for Bubble.io applications?',
         answer:
-          'Regularly. Bubble’s API Connector handles outbound calls to third-party services, and its Data and Workflow APIs let external systems read and write your app data. We have built AI and LLM integrations, payment flows and hybrid architectures where a WordPress or Next.js marketing site sits in front of a Bubble application on an app subdomain, as with LineaScore and Boomerang.',
+          'Regularly. Bubble’s API Connector handles outbound calls to third-party services, and its Data and Workflow APIs let external systems read and write your app data. We have built AI and LLM integrations, payment flows and hybrid architectures where a marketing site sits in front of a Bubble application on an app subdomain, as with LineaScore.',
       },
       {
         question: 'What happens when the third party changes their API?',

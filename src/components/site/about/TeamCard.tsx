@@ -3,8 +3,9 @@ import { LitWrap } from '@/components/ds';
 import { TeamPhoto } from './TeamPhoto';
 
 /**
- * One team member: portrait, name, role, bio and focus chips. The article `id`
- * is the member slug so blog-post author links (`/about#<slug>`) land here.
+ * One team member: portrait, name, role, bio, focus chips and — where the
+ * record carries one — a link to their personal portfolio site. The article
+ * `id` is the member slug so blog-post author links (`/about#<slug>`) land here.
  */
 export interface TeamCardProps {
   member: TeamMember;
@@ -35,6 +36,15 @@ export function TeamCard({ member }: TeamCardProps) {
               </li>
             ))}
           </ul>
+
+          {member.portfolio ? (
+            <p className="about-team__portfolio">
+              <a href={member.portfolio} target="_blank" rel="noopener noreferrer">
+                {member.portfolio.replace(/^https?:\/\//, '')}
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </p>
+          ) : null}
         </div>
       </article>
     </LitWrap>

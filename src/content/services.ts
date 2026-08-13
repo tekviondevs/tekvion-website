@@ -1,6 +1,7 @@
 import type { Service, ServiceCategory } from './types';
 import { designServices } from './services/design';
 import { developmentServices } from './services/development';
+import { automationServices } from './services/automation';
 import { growthServices } from './services/growth';
 import { platformServices } from './services/platform';
 
@@ -8,6 +9,7 @@ import { platformServices } from './services/platform';
 export const services: Service[] = [
   ...designServices,
   ...developmentServices,
+  ...automationServices,
   ...growthServices,
   ...platformServices,
 ];
@@ -15,6 +17,7 @@ export const services: Service[] = [
 export const serviceCategories: ServiceCategory[] = [
   'Design',
   'Development',
+  'Automation & CRM',
   'Growth & Optimisation',
   'Platform & Support',
 ];

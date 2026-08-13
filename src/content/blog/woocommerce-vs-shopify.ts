@@ -10,7 +10,7 @@ export const post: BlogPost = {
   tags: ['WooCommerce', 'Shopify', 'E-Commerce', 'Platform Selection', 'Cost of Ownership'],
   publishedAt: '2026-05-06',
   readingMinutes: 9,
-  authorSlug: 'suleman-buzdar',
+  authorSlug: 'shaharyar-ansari',
   excerpt:
     'Both platforms can run a serious store, so the real decision is about control, cost of ownership and who maintains what. Here is how we help clients choose between WooCommerce and Shopify.',
   relatedServiceSlugs: [

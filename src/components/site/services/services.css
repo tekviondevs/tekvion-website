@@ -315,6 +315,11 @@
   align-items: start;
 }
 
+/* Only one of the two columns has content — do not leave a dead column. */
+.tk-svc-split--single {
+  grid-template-columns: minmax(0, min(760px, 100%));
+}
+
 .tk-svc-split__title {
   margin: 0;
   font-family: var(--font-heading);
@@ -378,6 +383,17 @@
 /* ProjectCard is a white card; on a white band it needs an edge to sit on. */
 .band--light .tk-svc-related--projects .tk-project-card {
   border: 1px solid var(--border-hairline);
+  transition:
+    box-shadow var(--dur-base) var(--ease-standard),
+    border-color var(--dur-base) var(--ease-standard);
+}
+
+/* These are the only ProjectCards that carry a border of their own. The card's
+   hover ring (ds.css) is inset, so without this the edge would read as a grey
+   hairline with a blue line tucked inside it; recolouring the hairline lets
+   the two coincide as one 2px action-blue edge. */
+.band--light .tk-svc-related--projects .tk-project-card:hover {
+  border-color: var(--action-blue);
 }
 
 /* --------------------------------------------------------------------------

@@ -2,11 +2,11 @@
    Tekvion Innovations — forms, conversion pages and legal pages
    Owned by the forms/pages agent. Imported by:
      src/components/site/forms/form-fields.tsx
-     src/app/contact/page.tsx · src/app/quote/page.tsx
+     src/app/contact/page.tsx
      src/app/privacy-policy/page.tsx · src/app/terms-of-service/page.tsx
 
-   Field metrics come straight from the design export (page-contact.jsx,
-   page-quote.jsx): 13px/14px padding, 8px radius, 1px hairline border,
+   Field metrics come straight from the design export (page-contact.jsx):
+   13px/14px padding, 8px radius, 1px hairline border,
    15px type, 13.5px/500 labels.
    ========================================================================== */
 
@@ -40,17 +40,6 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 16px;
-}
-
-.tk-form__legend {
-  font-family: var(--font-heading);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  padding-top: 8px;
-  border-top: 1px solid var(--border-hairline);
 }
 
 .tk-form__smallprint {
@@ -298,7 +287,7 @@ select.tk-field__control[data-placeholder='true'] {
 }
 
 /* --------------------------------------------------------------------------
-   Contact / quote page layout
+   Contact page layout
    -------------------------------------------------------------------------- */
 .tk-contact__grid {
   display: grid;
@@ -423,93 +412,8 @@ select.tk-field__control[data-placeholder='true'] {
   margin-top: 2px;
 }
 
-/* "What happens next" — three numbered steps */
-.tk-next-steps {
-  border: 1px solid var(--border-hairline);
-  border-radius: var(--radius-card);
-  padding: 26px 28px;
-  background: #fff;
-}
-
-.tk-next-steps__title {
-  font-family: var(--font-heading);
-  font-size: 18px;
-  font-weight: var(--weight-heading);
-  margin-bottom: 18px;
-}
-
-.tk-next-steps__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 18px;
-}
-
-.tk-next-step {
-  display: flex;
-  gap: 12px;
-}
-
-.tk-next-step__num {
-  flex: none;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--action-blue);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-heading);
-  font-size: 13px;
-  font-weight: var(--weight-heading);
-}
-
-.tk-next-step__title {
-  font-weight: var(--weight-heading);
-  font-size: 14.5px;
-  font-family: var(--font-heading);
-}
-
-.tk-next-step__copy {
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: var(--text-muted);
-  margin-top: 3px;
-}
-
-.tk-next-steps__foot {
-  margin-top: 20px;
-  padding-top: 18px;
-  border-top: 1px solid var(--border-hairline);
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: var(--text-muted);
-}
-
-.tk-next-steps__foot a {
-  color: var(--action-blue);
-}
-
-/* Pricing note on /quote — we publish a stance, never figures. */
-
-.tk-bands__note {
-  margin-top: 40px;
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--text-muted);
-  max-width: 76ch;
-  margin-inline: auto;
-  text-align: center;
-}
-
-.tk-bands__note a {
-  color: var(--action-blue);
-}
-
 /* --------------------------------------------------------------------------
-   Page hero shared by /contact, /quote and the legal pages
+   Page hero shared by /contact and the legal pages
    -------------------------------------------------------------------------- */
 .tk-page-hero__title {
   margin-top: 20px;
@@ -624,9 +528,6 @@ select.tk-field__control[data-placeholder='true'] {
   }
   .tk-form__panel {
     padding: 28px 22px;
-  }
-  .tk-next-steps {
-    padding: 22px 20px;
   }
   .tk-form__actions .tk-btn {
     width: 100%;

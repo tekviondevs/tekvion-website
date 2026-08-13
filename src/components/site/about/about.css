@@ -244,6 +244,25 @@
   gap: 6px;
 }
 
+/* Personal portfolio link — only Shaharyar carries one today, so it sits at the
+   end of the card and pushes to the bottom to keep the three cards aligned. */
+.about-team__portfolio {
+  margin: auto 0 0;
+  padding-top: 6px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.about-team__portfolio a {
+  color: var(--action-blue);
+  text-decoration: none;
+}
+
+.about-team__portfolio a:hover {
+  text-decoration: underline;
+}
+
 /* --------------------------------------------------------------------------
    Values
    -------------------------------------------------------------------------- */

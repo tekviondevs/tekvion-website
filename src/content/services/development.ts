@@ -156,7 +156,6 @@ export const developmentServices: Service[] = [
       'headless-jamstack-development',
       'seo-services',
     ],
-    featured: true,
   },
 
   /* ------------------------------------------------------------------ */
@@ -437,7 +436,7 @@ export const developmentServices: Service[] = [
     relatedProjectSlugs: ['afik', 'tapi', 'lock-stock', 'universal-spirituality'],
     relatedServiceSlugs: [
       'wordpress-development',
-      'custom-web-application-development',
+      'php-development',
       'api-development-integrations',
       'website-maintenance-support',
     ],
@@ -957,6 +956,7 @@ export const developmentServices: Service[] = [
       'WordPress REST API',
       'GraphQL',
       'Node.js',
+      'Supabase',
       'Vercel',
       'Cloudflare',
       'Git',
@@ -996,12 +996,12 @@ export const developmentServices: Service[] = [
       {
         question: 'Have you shipped hybrid architectures like this before?',
         answer:
-          'Yes. We build split stacks where a fast marketing front end sits on one platform and the application sits on another — including a Next.js marketing site paired with a Bubble.io application on an app subdomain, and a WordPress landing page paired with a Bubble.io reporting product. The pattern lets each layer be optimised for a different job.',
+          'Yes. We build split stacks where a fast marketing front end sits on one platform and the application sits on another — LineaScore runs a WordPress landing site in front of a Bubble.io reporting product on an app subdomain. The pattern lets each layer be optimised for a different job, and lets one layer be replaced without touching the other. Where a product outgrows that arrangement entirely we rebuild it outright, as we did for The Boomerang, moving it off Bubble.io onto a custom MERN, Next.js and Supabase application.',
       },
     ],
-    relatedProjectSlugs: ['boomerang', 'lineascore', 'hyperspace-international'],
+    relatedProjectSlugs: ['the-boomerang', 'freetoolsgrid', 'lineascore'],
     relatedServiceSlugs: [
-      'custom-website-development',
+      'nextjs-development',
       'website-speed-optimisation',
       'api-development-integrations',
       'web-hosting-devops',
@@ -1036,7 +1036,7 @@ export const developmentServices: Service[] = [
       {
         title: 'Workflow automation that removes manual steps',
         description:
-          'Scheduled jobs, status transitions, notification emails, approval chains and recurring tasks run without anyone remembering to trigger them. Every hour of repeated admin work removed is the clearest return the application delivers.',
+          'Scheduled jobs, status transitions, notification emails, approval chains and recurring tasks run without anyone remembering to trigger them, built in code or in n8n where a visual workflow is easier to change. Every hour of repeated admin work removed is the clearest return the application delivers.',
       },
       {
         title: 'Dashboards and reporting for the people deciding',
@@ -1063,7 +1063,7 @@ export const developmentServices: Service[] = [
       {
         title: 'Data model and platform decision',
         description:
-          'We design the schema and relationships, then choose the platform honestly: Bubble.io for fast iteration and operational tools, a coded Next.js stack where performance, scale or specific libraries demand it.',
+          'We design the schema and relationships, then choose the platform honestly: Bubble.io for fast iteration and operational tools, a coded MERN or Next.js stack on MongoDB or Supabase Postgres where performance, scale, code ownership or specific libraries demand it.',
       },
       {
         title: 'Prototype of the critical path',
@@ -1098,8 +1098,12 @@ export const developmentServices: Service[] = [
       'React',
       'TypeScript',
       'Node.js',
+      'Express',
+      'MongoDB',
       'PostgreSQL',
+      'Supabase',
       'REST APIs',
+      'n8n',
       'Stripe',
       'Figma',
       'Cloudflare',
@@ -1140,10 +1144,10 @@ export const developmentServices: Service[] = [
           'Applications are living systems, so we include a support window covering fixes and small refinements after rollout. Beyond that, most clients keep a monthly retainer for improvements, monitoring and new modules as the business changes. Roughly half our engagements are with clients who have stayed with us for two years or more, which is mostly how ongoing product work goes.',
       },
     ],
-    relatedProjectSlugs: ['lineascore', 'tylo-ai', 'swayed', 'bostmd'],
+    relatedProjectSlugs: ['the-boomerang', 'lineascore', 'tylo-ai', 'swayed'],
     relatedServiceSlugs: [
+      'mern-stack-development',
       'bubble-nocode-development',
-      'saas-product-development',
       'api-development-integrations',
       'ai-llm-integration',
     ],
@@ -1263,7 +1267,7 @@ export const developmentServices: Service[] = [
       {
         question: 'What happens if we outgrow Bubble?',
         answer:
-          'It is a manageable transition, not a cliff, and we design for it. Your data is exportable, and where we know a migration is likely we keep integrations behind clean API boundaries so external services do not need rewiring. A common path is keeping Bubble for the admin and internal tooling while rebuilding the customer-facing product on a coded stack once the requirements have stopped moving.',
+          'It is a manageable transition, not a cliff, and we have done it. We supported The Boomerang on Bubble.io for six to eight months, then rebuilt the product on MERN, Next.js and Supabase when a custom solution became the better fit. Your data is exportable, and where a migration looks likely we keep integrations behind clean API boundaries so external services do not need rewiring when the move happens.',
       },
       {
         question: 'How much does a Bubble application cost to run?',
@@ -1350,7 +1354,7 @@ export const developmentServices: Service[] = [
       {
         title: 'Architecture and platform choice',
         description:
-          'Data model, tenancy, plan entitlements and integration points designed, then platform chosen: Bubble.io for fast iteration and early traction, a coded Next.js stack where scale, code ownership or diligence requirements demand it.',
+          'Data model, tenancy, plan entitlements and integration points designed, then platform chosen: Bubble.io for fast iteration and early traction, a coded MERN and Next.js stack on Supabase or another Postgres where scale, code ownership or diligence requirements demand it.',
       },
       {
         title: 'MVP build and private beta',
@@ -1385,7 +1389,10 @@ export const developmentServices: Service[] = [
       'React',
       'TypeScript',
       'Node.js',
+      'Express',
+      'MongoDB',
       'PostgreSQL',
+      'Supabase',
       'Stripe',
       'OpenAI API',
       'Anthropic API',
@@ -1577,7 +1584,6 @@ export const developmentServices: Service[] = [
       'custom-web-application-development',
       'api-development-integrations',
     ],
-    featured: true,
   },
 
   /* ------------------------------------------------------------------ */
@@ -1719,6 +1725,438 @@ export const developmentServices: Service[] = [
       'custom-web-application-development',
       'headless-jamstack-development',
     ],
+  },
+
+  /* ------------------------------------------------------------------ */
+  {
+    slug: 'mern-stack-development',
+    title: 'MERN Stack Development',
+    category: 'Development',
+    icon: 'layers',
+    short:
+      'Custom applications in MongoDB, Express, React and Node — the coded stack we move products onto when no-code stops paying its way.',
+    metaTitle: 'MERN Stack Development Services',
+    metaDescription:
+      'MERN stack development with MongoDB, Express, React and Node. Custom applications, internal panels and migrations off no-code platforms, built for you to own.',
+    heroTitle: 'MERN Stack Development for Products That Outgrew No-Code',
+    heroIntro:
+      'MERN — MongoDB, Express, React and Node.js — is what we build on when a product needs code it owns outright. We know that transition first-hand: we supported The Boomerang on Bubble.io for six to eight months, then rebuilt the product as a custom MERN and Next.js application on Supabase, including the internal panel that replaced the Airtable they had been paying for alongside it.',
+    whatYouGet: [
+      {
+        title: 'A data model designed before the first screen',
+        description:
+          'We map entities, relationships and states, then pick the store that fits them — MongoDB where records are document-shaped and still moving, Supabase Postgres where relational integrity and row-level security matter more. That decision gets made once, deliberately, rather than inherited from a tutorial.',
+      },
+      {
+        title: 'One language across the whole stack',
+        description:
+          'TypeScript runs from the data layer through the Express API into the React front end, with shared types so a field renamed on the server breaks the build rather than somebody’s screen. Fewer runtime surprises, and far less guesswork for whoever maintains the codebase next.',
+      },
+      {
+        title: 'An API layer with authentication done properly',
+        description:
+          'Express endpoints with real session or token authentication, role checks enforced server-side, validated request bodies and consistent error responses. Permissions live in the API rather than in whether the interface renders a button, so a curious user with a browser console gets nowhere.',
+      },
+      {
+        title: 'Internal panels that replace the tools you rent',
+        description:
+          'Operations software you subscribe to usually does one job your team genuinely needs. For The Boomerang we built a Data Team Panel that replaced the Airtable running alongside their no-code platform, putting the same records in a database they own and can query directly.',
+      },
+      {
+        title: 'Automation wired into the product, not bolted beside it',
+        description:
+          'Scheduled syncs, background jobs, notifications and multi-step integrations, built in n8n where a visual workflow is easier for your team to change and in code where it belongs in the repository. We built exactly this pairing for The Boomerang, and documented both halves.',
+      },
+      {
+        title: 'Code, infrastructure and data you own outright',
+        description:
+          'The repository, the database, the hosting accounts and the environment configuration all sit in your name from the first commit. No proprietary editor, no per-seat editor licence, and no awkward conversation about export limits if you decide to continue with someone else.',
+      },
+    ],
+    process: [
+      {
+        title: 'Audit and migration assessment',
+        description:
+          'Where a system already exists we go through its data model, workflows and integrations, and separate what must be carried over from what was only ever a workaround for the old platform. A rebuild is the one chance to leave those workarounds behind.',
+      },
+      {
+        title: 'Schema and API contract design',
+        description:
+          'We design the database schema, the endpoints the front end will call and the authentication model, then write them down. Front end and back end can then be built in parallel against an agreed contract instead of waiting on each other.',
+      },
+      {
+        title: 'Core build in reviewed cycles',
+        description:
+          'The most important workflow is built and deployed first, then the rest in short cycles with a working environment you can use at the end of each. You reprioritise as you see it running rather than at a launch meeting.',
+      },
+      {
+        title: 'Data migration and parallel running',
+        description:
+          'We import your existing records, reconcile counts on both sides, and run the new system alongside the old one while your team works in it on real data. Discrepancies surface while there is still a fallback.',
+      },
+      {
+        title: 'Cutover, monitoring and handover',
+        description:
+          'We switch traffic over with monitoring and error reporting already in place, keep the previous platform readable for a defined period, and hand across the repository, infrastructure and documentation with a walkthrough for your team.',
+      },
+    ],
+    deliverables: [
+      'Node.js and Express API with documented endpoints and authentication',
+      'React front end, delivered as a Next.js application where routing and SEO matter',
+      'MongoDB or Supabase Postgres schema with migrations under version control',
+      'Internal admin or data panel with role-based access',
+      'Data migration from the previous platform with record counts reconciled',
+      'n8n or in-code automations covering scheduled and event-driven work',
+      'Git repository, environment configuration and deployment pipeline in your accounts',
+      'Technical documentation plus a handover walkthrough for your team or next developer',
+    ],
+    techStack: [
+      'MongoDB',
+      'Express',
+      'React',
+      'Node.js',
+      'Next.js',
+      'TypeScript',
+      'Supabase',
+      'PostgreSQL',
+      'REST APIs',
+      'n8n',
+      'Stripe',
+      'Git',
+      'Vercel',
+      'Cloudflare',
+    ],
+    idealFor: [
+      'Your no-code application is hitting cost, performance or capability limits',
+      'You pay monthly for a tool holding data that should live in your own database',
+      'Investors or enterprise buyers expect to see source code and infrastructure',
+      'The product needs logic your current platform simply cannot express',
+      'Your team needs an internal panel around the data, not only a customer-facing app',
+      'You want one team owning the rebuild, the migration and the cutover',
+    ],
+    faqs: [
+      {
+        question: 'Should we rebuild in MERN or stay on our no-code platform?',
+        answer:
+          'Stay if the platform still fits. Rebuilding costs real money and time, and a working no-code product with room left in it is not a problem that needs solving. The case for moving arrives when platform costs scale faster than revenue, when a feature you need cannot be expressed there at all, or when owning the source becomes a commercial requirement. We tell you which of those applies before quoting anything.',
+      },
+      {
+        question: 'You mention MERN and Supabase — which database do you actually use?',
+        answer:
+          'Whichever fits the data. MERN traditionally means MongoDB, and we use it where records are document-shaped and the schema is still moving. On The Boomerang rebuild we used Supabase, which is Postgres, because the data was relational and row-level security let us enforce permissions at the database itself. Express, React and Node stay the same either way, so the label matters less than the fit.',
+      },
+      {
+        question: 'How do you migrate without stopping the business?',
+        answer:
+          'In stages. We stand the new system up alongside the old one, migrate data with record counts reconciled on both sides, and run the two in parallel while your team works in the new panel on real records. Only once the new system is demonstrably correct do we cut traffic over, and the previous platform stays readable for a defined period afterwards in case something needs checking.',
+      },
+      {
+        question: 'Do you build the front end in plain React or in Next.js?',
+        answer:
+          'Next.js in almost every case. It gives us routing, server rendering and static generation without assembling them ourselves, which matters the moment any part of the product has to be found in search or shared as a link. Plain React with a client-side router is still the right answer for an application that lives entirely behind a login and never needs indexing.',
+      },
+      {
+        question: 'Who maintains the application after launch?',
+        answer:
+          'Whoever you want to. The handover is built for either answer: you get the repository, the infrastructure accounts, environment notes and a recorded walkthrough, so an in-house developer or another agency can pick it up cleanly. Most clients keep us on a monthly retainer for improvements and monitoring instead, and roughly half our engagements have run for two years or more.',
+      },
+    ],
+    relatedProjectSlugs: ['the-boomerang'],
+    relatedServiceSlugs: [
+      'nextjs-development',
+      'custom-web-application-development',
+      'bubble-nocode-development',
+      'n8n-automation',
+    ],
     featured: true,
+  },
+
+  /* ------------------------------------------------------------------ */
+  {
+    slug: 'nextjs-development',
+    title: 'Next.js Development',
+    category: 'Development',
+    icon: 'rocket',
+    short:
+      'Next.js sites and applications on the App Router — statically generated, server-rendered where it counts, and indexable by default.',
+    metaTitle: 'Next.js Development Agency',
+    metaDescription:
+      'Next.js development for websites and web apps: App Router, server components, static generation and SEO built into every route, on hosting you control.',
+    heroTitle: 'Next.js Development for Sites and Apps That Load Instantly',
+    heroIntro:
+      'Next.js is what we reach for when a site has to be fast, indexable and genuinely interactive at the same time. FreeToolsGrid, our own free-tools product, runs on it. So does the site you are reading. So does The Boomerang front end we rebuilt after moving that product off Bubble.io. We build on the App Router with static generation as the default and server rendering where it earns its place.',
+    whatYouGet: [
+      {
+        title: 'Static generation by default',
+        description:
+          'Routes are prerendered at build time and served as finished HTML, so the first byte is a file rather than a database query. Server rendering is kept for the routes that genuinely need per-request data, which is a much shorter list than most builds assume.',
+      },
+      {
+        title: 'App Router architecture used as designed',
+        description:
+          'Nested layouts, route groups, streaming and server components used properly rather than bolted onto an older pattern. Data fetching happens on the server where credentials stay safe, and the browser ships JavaScript only for the components that actually need to be interactive.',
+      },
+      {
+        title: 'SEO built into the route, not added by a plugin',
+        description:
+          'Per-route metadata, canonical URLs, Open Graph and Twitter tags, JSON-LD structured data, an enumerated XML sitemap and robots rules, all generated from the same content the pages render. Nothing drifts out of sync, because there is only one source of truth.',
+      },
+      {
+        title: 'A typed component library the site is assembled from',
+        description:
+          'TypeScript components built on design tokens for colour, type and spacing, so the tenth page costs a fraction of the first. New sections get composed from existing pieces instead of hand-built, which is what keeps layouts consistent as a site grows past fifty pages.',
+      },
+      {
+        title: 'Content in a form your team can genuinely work with',
+        description:
+          'Typed content files where a site changes on a release cadence, or a headless CMS with rebuild webhooks where editors publish daily. We recommend one based on who edits and how often, not on which is more interesting for us to build.',
+      },
+      {
+        title: 'Deployment, previews and hosting you control',
+        description:
+          'Git-based deployment with a preview build for every branch, environment configuration documented, and hosting on Vercel, Cloudflare or any plain static host. The repository and the accounts are yours, so moving hosts later is a configuration change rather than a rebuild.',
+      },
+    ],
+    process: [
+      {
+        title: 'Fit assessment',
+        description:
+          'We check whether Next.js is genuinely the right answer for your situation or whether a well-built WordPress site would serve you better. Publishing frequency, who edits, budget and the level of custom interactivity all feed into that recommendation, and we give it honestly.',
+      },
+      {
+        title: 'Routes, content model and data sources',
+        description:
+          'We map every route, decide which are static and which need server rendering, define the content model, and settle where the content lives — typed files, a headless CMS or an API — before any component is written.',
+      },
+      {
+        title: 'Design system and component build',
+        description:
+          'Tokens for colour, type, spacing and motion come first, then the shared components every page is composed from. Building this layer up front is why later templates take days rather than weeks.',
+      },
+      {
+        title: 'Route implementation with metadata and schema',
+        description:
+          'Pages are built alongside their metadata, structured data and internal linking rather than in a later SEO pass, and the whole site is checked as a static build so nothing depends on a server that will not exist in production.',
+      },
+      {
+        title: 'Performance verification, launch and handover',
+        description:
+          'Lighthouse and Core Web Vitals measured on real templates, redirects mapped from any previous site, DNS and SSL handled at cutover, then the repository, pipeline and an editor walkthrough handed over.',
+      },
+    ],
+    deliverables: [
+      'Next.js App Router site or application in a Git repository you own',
+      'Typed, reusable React component library built on design tokens',
+      'Static generation for every route, with an enumerated XML sitemap',
+      'Per-route metadata, Open Graph tags and JSON-LD structured data',
+      'Content layer as typed files or a connected headless CMS with rebuild hooks',
+      'CI/CD pipeline with a preview deployment per branch',
+      'Core Web Vitals report measured on real page templates',
+      'Redirect map from any previous URLs, plus an editor and developer guide',
+    ],
+    techStack: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Node.js',
+      'Supabase',
+      'WordPress REST API',
+      'GraphQL',
+      'Vercel',
+      'Cloudflare',
+      'Git',
+      'Figma',
+      'Lighthouse',
+      'GA4',
+    ],
+    idealFor: [
+      'Page speed is a commercial requirement rather than a nice-to-have',
+      'Your site needs custom interactivity a CMS theme cannot deliver cleanly',
+      'You want a marketing front end decoupled from the application behind it',
+      'Content changes on a release cadence rather than several times a day',
+      'You have or can hire developers who are comfortable with React',
+      'You want the source, the pipeline and the hosting accounts in your name',
+    ],
+    faqs: [
+      {
+        question: 'Is Next.js better than WordPress for my site?',
+        answer:
+          'Not universally, and we will say so. WordPress wins when non-technical people publish frequently and need an editor with a media library, which is why 42 of our builds run on it. Next.js wins on raw speed, custom interfaces and sites that are really applications wearing a marketing site. The honest test is who edits the content and how often, so we ask that before recommending either.',
+      },
+      {
+        question: 'Who edits the content on a Next.js site?',
+        answer:
+          'That depends on the setup we choose together. For sites that change on a release cadence, content lives in typed files and updates ship with a deployment, which suits teams with a developer in reach. Where editors publish daily we connect a headless CMS with rebuild webhooks, so publishing triggers a fresh static build automatically and nobody needs to touch the repository.',
+      },
+      {
+        question: 'Have you actually shipped Next.js work, or is it a side interest?',
+        answer:
+          'It is delivery work. FreeToolsGrid is our own product, built and maintained by us on Next.js. This site is a Next.js App Router build. The Boomerang front end is Next.js on a MERN and Supabase back end after we moved that product off Bubble.io. We also pair Next.js marketing front ends with applications hosted elsewhere, which is a split we have shipped repeatedly.',
+      },
+      {
+        question: 'Where does a Next.js site have to be hosted?',
+        answer:
+          'Nowhere in particular. Vercel is the simplest option and the one we default to, but a fully static build runs equally well on Cloudflare Pages, Netlify or any plain static host, which keeps you portable. Where a project needs server rendering or API routes we discuss hosting at architecture stage rather than discovering the constraint after the build is finished.',
+      },
+      {
+        question: 'Can Next.js run an application, not just a website?',
+        answer:
+          'Yes, and we build both. Route handlers, server actions and server components cover authentication, forms and data work, with a database such as Supabase Postgres or MongoDB behind them. For heavier products we pair a Next.js front end with a separate Node and Express API so the two can scale and be deployed independently, which is the shape of our MERN builds.',
+      },
+    ],
+    relatedProjectSlugs: ['freetoolsgrid', 'the-boomerang'],
+    relatedServiceSlugs: [
+      'mern-stack-development',
+      'headless-jamstack-development',
+      'website-speed-optimisation',
+      'custom-website-development',
+    ],
+    featured: true,
+  },
+
+  /* ------------------------------------------------------------------ */
+  {
+    slug: 'php-development',
+    title: 'PHP Development',
+    category: 'Development',
+    icon: 'code',
+    short:
+      'Custom PHP work — plugins, backend logic, integrations and legacy maintenance — in the language 42 of our delivered builds already run on.',
+    metaTitle: 'Custom PHP Development Services',
+    metaDescription:
+      'Custom PHP development: bespoke WordPress plugins, backend logic, API integrations and legacy codebase maintenance, written to standards you can audit.',
+    heroTitle: 'Custom PHP Development and Legacy Codebase Work',
+    heroIntro:
+      'PHP is the language underneath most of what we have delivered. Forty-two of our forty-nine projects run on WordPress, which means custom plugins, theme code, WooCommerce logic and API integrations written in PHP every week. We also take on the codebases other developers left behind, where the first job is understanding what exists before changing any of it.',
+    whatYouGet: [
+      {
+        title: 'Backend logic written to standards, not to a deadline',
+        description:
+          'Structured, namespaced code with sanitised input, escaped output, prepared statements and nonce-protected actions as the default rather than a hardening pass afterwards. A security reviewer, an auditor or your next developer can read it without needing us to translate.',
+      },
+      {
+        title: 'Custom plugins and functionality inside WordPress',
+        description:
+          'Most of the PHP we write lives in WordPress: bespoke plugins, WooCommerce logic, custom post types, admin screens and REST endpoints. We are straightforward that this is where our PHP depth sits, rather than claiming a framework practice we do not run.',
+      },
+      {
+        title: 'Third-party APIs wrapped safely',
+        description:
+          'CRMs, payment providers, booking systems, shipping carriers and LLM endpoints wrapped with authentication, transient caching, timeouts, retries and error logging. When an upstream provider has an outage, your site degrades visibly in a log instead of white-screening for customers.',
+      },
+      {
+        title: 'Performance work at the query level',
+        description:
+          'Slow PHP is usually slow queries. We profile the actual page, find the unindexed lookup or the loop firing one database call per row, and fix the cause rather than caching over it. Object caching and transients then keep the fixed version fast under real traffic.',
+      },
+      {
+        title: 'Legacy code assessed honestly before anyone commits',
+        description:
+          'We review structure, dependency versions, security posture and PHP version compatibility, then tell you plainly whether the codebase is maintainable as it stands, worth refactoring, or cheaper to replace. That assessment is written down before a direction is chosen.',
+      },
+      {
+        title: 'Upgrades that survive the next PHP release',
+        description:
+          'Deprecated functions, removed extensions and changed defaults are what break older PHP applications. We test against current PHP versions, fix the incompatibilities on a staging clone first, and hand you a written record of what changed and why it needed changing.',
+      },
+    ],
+    process: [
+      {
+        title: 'Code review and scoping',
+        description:
+          'We read what exists before proposing anything: structure, dependencies, database usage, PHP version and the security posture. You get a written assessment separating the work that is genuinely required from the work that would merely be tidy.',
+      },
+      {
+        title: 'Environment and version control setup',
+        description:
+          'Local and staging environments matching production PHP and database versions, the codebase brought into Git if it is not already, and a deployment path established so nothing has to be edited on a live server again.',
+      },
+      {
+        title: 'Build against coding standards',
+        description:
+          'Development happens in small, reviewable commits with WordPress or PSR coding standards enforced, input and output handling applied consistently, and translation-ready strings wherever the code produces user-facing text.',
+      },
+      {
+        title: 'Testing across roles and failure states',
+        description:
+          'We test each user role and permission boundary, the upgrade path, and what happens when an external service is slow or unavailable, rather than confirming only that the happy path works on a developer machine.',
+      },
+      {
+        title: 'Deployment and documentation',
+        description:
+          'A backup is taken, the release goes out through the deployment path rather than by hand, and you receive the repository, a README covering hooks, settings and known limits, and a changelog for the version shipped.',
+      },
+    ],
+    deliverables: [
+      'Custom PHP code delivered in a Git repository you own',
+      'Written assessment of the existing codebase where one is being taken over',
+      'Bespoke WordPress plugin or functionality package, installable and versioned',
+      'API integrations with authentication, caching, retries and error logging',
+      'PHP version compatibility fixes verified on a staging clone',
+      'Query and performance profiling report with the fixes applied',
+      'Developer README covering hooks, filters, settings and known limits',
+      'Changelog, semantic version numbering and rollback instructions',
+    ],
+    techStack: [
+      'PHP',
+      'WordPress',
+      'WooCommerce',
+      'MySQL',
+      'MariaDB',
+      'ACF',
+      'Composer',
+      'WP-CLI',
+      'WordPress REST API',
+      'Git',
+      'Kinsta',
+      'Hostinger',
+      'Cloudflare',
+    ],
+    idealFor: [
+      'You need functionality no existing plugin or package actually provides',
+      'A PHP codebase was inherited and nobody currently understands it',
+      'Your host is warning you about an unsupported, end-of-life PHP version',
+      'An integration between WordPress and an internal system needs building',
+      'Pages are slow and the cause is queries rather than images or scripts',
+      'You want code a security reviewer or an acquirer can read without excuses',
+    ],
+    faqs: [
+      {
+        question: 'Do you build in Laravel or Symfony?',
+        answer:
+          'We will be straight with you: our PHP depth is WordPress-centred, across 42 delivered builds, plus the plugins, integrations and backend logic those required. We use Composer, namespacing and modern PHP practices within that work, but we do not run a Laravel or Symfony practice and would rather say so than take a project that is a poor fit for us and a poor outcome for you.',
+      },
+      {
+        question: 'Can you take over a PHP codebase another developer wrote?',
+        answer:
+          'Usually, yes, and it is a large part of what we do. We start by reading the code and giving you a written assessment covering structure, security, dependency health and PHP version compatibility. Where the foundation is sound we take over maintenance and add features. Where it stores data in ways that will not scale, we tell you that before you invest further in it.',
+      },
+      {
+        question: 'My site runs an old PHP version — what is the actual risk?',
+        answer:
+          'Unsupported PHP versions stop receiving security patches, so known vulnerabilities simply stay open, and hosts eventually force an upgrade on their own schedule rather than yours. The practical risk is that the forced upgrade breaks a site nobody has tested. We upgrade on a staging clone first, fix the deprecations found, and only then move production.',
+      },
+      {
+        question: 'How do you avoid breaking a live site while changing its code?',
+        answer:
+          'Nothing gets edited on production. Changes are written locally, reviewed in Git, tested on a staging clone that matches the live PHP and database versions, and released through a deployment path with a backup taken immediately beforehand. That discipline is why a rollback takes minutes instead of becoming an evening of restoring files by hand.',
+      },
+      {
+        question: 'Do I own the PHP code you write?',
+        answer:
+          'Yes. You get the full source in a repository you control, with no licence key and no phone-home call. Code built on WordPress inherits GPL obligations for its WordPress-derived parts, which we explain up front rather than leaving in small print. In practice you can hand the repository to any competent PHP developer tomorrow and they can carry on with it.',
+      },
+    ],
+    /* Deliberately empty. The PHP work on our WordPress builds is custom theme
+       and plugin code inside those projects; no project record claims
+       `php-development` as a service, so we do not front those case studies
+       here as PHP engagements. The band self-removes when this list is empty. */
+    relatedProjectSlugs: [],
+    relatedServiceSlugs: [
+      'wordpress-plugin-theme-development',
+      'wordpress-development',
+      'api-development-integrations',
+      'website-maintenance-support',
+    ],
   },
 ];

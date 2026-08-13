@@ -6,12 +6,12 @@ import { contact, FORM_ENDPOINT } from '@/content/company';
 import './forms.css';
 
 /* ==========================================================================
-   Shared form primitives and submission handling for /contact and /quote.
+   Shared form primitives and submission handling for the /contact form.
 
-   Both forms are static-safe: there is no server route and no database. They
-   POST JSON to FORM_ENDPOINT (a Formspree-style relay declared in
+   The form is static-safe: there is no server route and no database. It POSTs
+   JSON to FORM_ENDPOINT (a Formspree-style relay declared in
    src/content/company.ts). Until that endpoint is swapped for a real one the
-   forms stay usable — they fall back to a pre-filled mailto: so an enquiry is
+   form stays usable — it falls back to a pre-filled mailto: so an enquiry is
    never silently lost.
    ========================================================================== */
 

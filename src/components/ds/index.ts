@@ -6,7 +6,8 @@ export { Container, type ContainerProps } from './Container';
 export { FaqRow, type FaqRowProps } from './FaqRow';
 export { hasIcon, Icon, type IconName, type IconProps } from './Icon';
 export { LitWrap, type LitWrapProps } from './LitWrap';
-export { NewsletterBand, type NewsletterBandProps } from './NewsletterBand';
+/* NewsletterBand was deleted on purpose — no subscriber list, no sending
+   infrastructure, no unsubscribe flow. Do not re-add it until one exists. */
 export { ProjectCard, type ProjectCardProps } from './ProjectCard';
 export { SectionHeading, type SectionHeadingProps } from './SectionHeading';
 export { ServiceCard, type ServiceCardProps } from './ServiceCard';

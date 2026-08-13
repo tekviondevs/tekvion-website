@@ -10,6 +10,9 @@ import type { Project, ProjectStack } from './types';
  *  - Five live builds whose write-ups are still pending internally are listed
  *    for completeness with a short, honest note and are never featured.
  *  - No invented metrics, quotes, people or results appear anywhere below.
+ *  - Tekvion's own products (FreeToolsGrid) are listed under "Our own
+ *    products" and are labelled as ours. They are never counted as clients
+ *    and must never appear in any "trusted by" style listing.
  */
 export const projects: Project[] = [
   /* ------------------------------------------------------------------ */
@@ -1290,23 +1293,102 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: 'boomerang',
-    name: 'Boomerang',
-    descriptor: 'Next.js Landing + Bubble.io App',
+    slug: 'the-boomerang',
+    name: 'The Boomerang',
+    descriptor: 'Bubble.io to Custom MERN & Next.js Platform',
     url: 'https://www.theboomerang.co/',
     industry: 'AI & SaaS Products',
     stack: 'Hybrid',
-    tech: ['Next.js (landing)', 'Bubble.io (app)', 'Subdomain deployment'],
+    tech: [
+      'Next.js',
+      'React',
+      'Node.js',
+      'Express',
+      'MongoDB',
+      'Supabase',
+      'n8n',
+      'Intercom',
+      'Bubble.io',
+    ],
     languages: ['English'],
     country: 'International',
     summary:
-      'A modern web product with the marketing site built in Next.js and the live application hosted on a Bubble.io subdomain. It demonstrates a clean architectural split: a high-performance marketing front end paired with a rapidly iterable Bubble.io product back end.',
+      'A product that started on Bubble.io and outgrew it. We ran the Bubble.io build with the team for roughly six to eight months, then rebuilt the whole thing as a custom application on the MERN stack and Next.js with Supabase as the database — including a custom Data Team Panel that replaced their paid Airtable dependency, a set of complex n8n automations, and a round of work resolving long-standing issues in their Intercom setup.',
     serviceSlugs: [
-      'headless-jamstack-development',
-      'bubble-nocode-development',
-      'saas-product-development',
+      'mern-stack-development',
+      'nextjs-development',
+      'n8n-automation',
       'custom-web-application-development',
+      'website-migration-replatforming',
+      'bubble-nocode-development',
     ],
+    featured: true,
+    caseStudy: {
+      metaTitle: 'The Boomerang Case Study | Bubble to MERN Rebuild',
+      metaDescription:
+        'How we took The Boomerang from Bubble.io to a custom MERN and Next.js platform on Supabase, with an in-app data panel replacing Airtable and n8n automations.',
+      challenge: [
+        'The Boomerang was running on Bubble.io. That is a perfectly good place for a product to start, and we spent roughly six to eight months building and extending the Bubble application with the team. No-code gets an idea into the hands of real users faster than anything else, and for a while it was the right call.',
+        'What surrounds a Bubble build, though, tends to grow quietly. Alongside the application the team was also paying for Airtable, which had become the working surface for their data team — a second subscription, a second system, and a second place where the truth about the business lived. Every operational process ran across both.',
+        'Eventually the team hit the point every successful no-code product reaches: the ceiling of the platform started to cost more than it saved. They decided to move to a custom solution, and asked us to build it — the same team that had built the Bubble version, which meant nobody had to relearn the domain from scratch.',
+      ],
+      approach: [
+        {
+          heading: 'The Bubble.io engagement',
+          body: [
+            'We worked on the Bubble.io application for around six to eight months before any rebuild was on the table. That period is the reason the replatform went the way it did: we were not handed a specification, we already knew how the product actually behaved, which workflows mattered, where the edge cases were and which features were load-bearing.',
+            'It also meant we could be honest about when Bubble stopped being the right answer. We do not push clients off no-code as a matter of policy — several of the products in this portfolio are Bubble builds we still recommend keeping there. The Boomerang moved because the team decided a custom stack served them better, and we agreed.',
+          ],
+        },
+        {
+          heading: 'A custom rebuild on MERN, Next.js and Supabase',
+          body: [
+            'We rebuilt the product as a full custom application: a MERN-stack application layer — React on the front end, Node.js and Express services behind it — with Next.js delivering the site, and Supabase as the database.',
+            'Next.js gave the public-facing side proper rendering control, routing and performance characteristics that a no-code platform simply does not expose. Supabase gave the team a real relational database they own, with direct access to their own data instead of it living inside a platform\'s abstraction.',
+            'The rebuild covered the whole site and application rather than a facade over the old system, so there is no residual dependency on the previous platform holding the architecture back.',
+          ],
+        },
+        {
+          heading: 'Data Team Panel, n8n automations and Intercom',
+          body: [
+            'The single most useful piece of the rebuild was the Data Team Panel. Their data team had been working in Airtable — a paid tool sitting outside the product, holding data the product needed. We built a custom panel inside the application to do that job, so the data team works against the real database in the real system, and the Airtable dependency went away with it.',
+            'We built complex n8n automations to carry the operational workflows that connect the moving parts of the business — the sequences that had previously depended on manual steps or on the Bubble platform\'s own workflow engine.',
+            'We also went through their Intercom setup and resolved a long list of issues in it. Support tooling is usually the last thing anyone budgets attention for, and it is where a surprising amount of daily friction accumulates.',
+          ],
+        },
+      ],
+      outcome: [
+        'The Boomerang now runs on a stack it owns end to end: a custom MERN and Next.js application on Supabase, with the data team working inside the product rather than in a separate paid tool, and operational workflows handled by n8n automations we built for them.',
+        'The Airtable subscription that had been running alongside the Bubble application is gone, replaced by an in-product panel — one system instead of two, and one place where the data lives.',
+        'For us it is the clearest demonstration of something we say often: the right stack changes over the life of a product. We built their no-code version, we told them honestly when it had served its purpose, and we built the custom replacement. It is the case study behind our MERN, Next.js, replatforming and n8n automation work.',
+      ],
+      highlights: [
+        'Roughly six to eight months of Bubble.io development before the replatform decision',
+        'Full custom rebuild on the MERN stack and Next.js, with Supabase as the database',
+        'Custom Data Team Panel built into the product, replacing a paid Airtable dependency',
+        'Complex n8n automations built for their operational workflows',
+        'Resolved a backlog of issues in their Intercom setup',
+        'Same team across both platforms — no domain knowledge lost in the migration',
+      ],
+    },
+  },
+
+  /* ------------------------------------------------------------------ */
+  /*  Our own products                                                   */
+  /* ------------------------------------------------------------------ */
+  {
+    slug: 'freetoolsgrid',
+    name: 'FreeToolsGrid',
+    descriptor: 'Our Own Free Tools Platform',
+    url: 'https://freetoolsgrid.com',
+    industry: 'AI & SaaS Products',
+    stack: 'Next.js',
+    tech: ['Next.js', 'React'],
+    languages: ['English'],
+    country: 'International',
+    summary:
+      'FreeToolsGrid is our own product, not client work. It is a free online tools platform built and run by Tekvion on Next.js — the place where we ship our own ideas, on our own deadlines, using the same stack we build client applications with. Everything on it is free to use.',
+    serviceSlugs: ['nextjs-development', 'custom-website-development'],
     featured: false,
   },
 ];
@@ -1356,34 +1438,8 @@ export const projectsByIndustry: { industry: string; projects: Project[] }[] =
     projects: projects.filter((project) => project.industry === industry),
   }));
 
-/**
- * Real client brand names for the "Trusted by teams across 4 continents" band.
- * Every name below is a live, documented project from the list above — no
- * invented logos, no placeholder brands.
- */
-export const clientNames: string[] = [
-  'Tapi Carpets & Floors',
-  'Lock Stock Self-Storage',
-  'Tylo AI',
-  'Ronival',
-  'Mediseo',
-  'Afik',
-  'Cloverfour',
-  'Mocki',
-  'InkGenX',
-  'LineaScore',
-  'Swayed',
-  'BostMD',
-  'Wegets',
-  'Loofys',
-  'Wuraka',
-  'AnyExpat',
-  'Hyperspace International',
-  'SV Bad Heilbrunn',
-  'Apollo Kulturhaus',
-  'Forever Day One',
-  'E-Mobility Search',
-  'In Harmony Education',
-  'Vitacode',
-  'Universal Spirituality',
-];
+/* There is deliberately no `clientNames` export. The "Trusted by teams across
+   four continents" band lists no client or partner names by decision — it
+   carries the heading, the verified proof numbers and the languages note only.
+   If a name list is ever needed again, derive it from `projects` rather than
+   maintaining a second hand-written copy that can drift. */

@@ -54,8 +54,9 @@ export const staticRoutes: SiteRoute[] = [
   { path: '/services', kind: 'pillar', lastModified: SITE_REVISED },
   { path: '/portfolio', kind: 'pillar', lastModified: SITE_REVISED },
   { path: '/blog', kind: 'pillar', lastModified: newestPostDate },
+  /* /quote was retired: the two conversion paths are now the Calendly booking
+     page (off-site, so it has no route here) and the /contact form. */
   { path: '/contact', kind: 'conversion', lastModified: SITE_REVISED },
-  { path: '/quote', kind: 'conversion', lastModified: SITE_REVISED },
   { path: '/privacy-policy', kind: 'legal', lastModified: SITE_REVISED },
   { path: '/terms-of-service', kind: 'legal', lastModified: SITE_REVISED },
 ];

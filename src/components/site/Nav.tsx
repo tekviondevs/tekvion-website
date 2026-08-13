@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button, Container, Icon } from '@/components/ds';
+import { CALENDLY_URL } from '@/content/company';
 import { contact } from '@/lib/seo';
 
 /**
@@ -131,8 +132,10 @@ export function Nav() {
         </nav>
 
         <div className="tk-nav__cta">
-          <Button href="/quote" variant="secondary-light" size="sm" arrow>
-            Get a Free Quote
+          {/* Calendly is off-site: Button auto-sets target/rel for http(s) hrefs,
+              and the hidden suffix announces the new tab to screen readers. */}
+          <Button href={CALENDLY_URL} variant="secondary-light" size="sm" arrow>
+            Book a Call<span className="sr-only"> (opens in a new tab)</span>
           </Button>
         </div>
 
@@ -176,8 +179,8 @@ export function Nav() {
               ))}
             </div>
             <div className="tk-nav__drawer-cta">
-              <Button href="/quote" size="lg" block arrow onClick={closeDrawer}>
-                Get a Free Quote
+              <Button href={CALENDLY_URL} size="lg" block arrow onClick={closeDrawer}>
+                Book a Call<span className="sr-only"> (opens in a new tab)</span>
               </Button>
             </div>
             <div className="tk-nav__drawer-contact">

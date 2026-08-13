@@ -9,15 +9,15 @@ import {
   serviceCount,
 } from '@/components/site/services';
 import '@/components/site/services/services.css';
-import { faqs, processSteps } from '@/content/company';
+import { CALENDLY_URL, faqs, processSteps } from '@/content/company';
 import { services, servicesByCategory } from '@/content/services';
 import { breadcrumbs, JsonLd, type JsonLdObject } from '@/lib/schema';
 import { absoluteUrl, buildMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Web Design & Development Services',
+  title: 'Web Design, Development & Automation Services',
   description:
-    'Twenty-nine web design, development, growth and support services from a studio with 49+ delivered projects on WordPress, WooCommerce, Bubble.io and Next.js.',
+    'Design, development, automation and support services from a studio with 49+ delivered projects on WordPress, Bubble.io, MERN, Next.js, PHP and GoHighLevel.',
   path: '/services',
 });
 
@@ -48,13 +48,21 @@ const presentation: Record<ServiceCategory, CategoryPresentation> = {
       'The build itself: WordPress for content, commerce and learning platforms, Bubble.io for products with real application logic, Next.js where raw speed is the point.',
     tone: 'dark',
   },
+  'Automation & CRM': {
+    id: 'automation',
+    headingLead: 'Automation &',
+    headingEmphasis: 'CRM',
+    intro:
+      'The operations layer around the site: GoHighLevel for CRM, pipelines and funnels, and AI, n8n and Make.com for the work that used to be done by hand.',
+    tone: 'light',
+  },
   'Growth & Optimisation': {
     id: 'growth',
     headingLead: 'Growth &',
     headingEmphasis: 'Optimisation',
     intro:
       'What happens after launch — getting found, loading fast, and turning the traffic you already have into enquiries.',
-    tone: 'light',
+    tone: 'dark',
   },
   'Platform & Support': {
     id: 'platform',
@@ -62,7 +70,7 @@ const presentation: Record<ServiceCategory, CategoryPresentation> = {
     headingEmphasis: 'Support',
     intro:
       'Keeping the site live, safe and current, plus the migrations, integrations and infrastructure work that sits underneath it.',
-    tone: 'dark',
+    tone: 'light',
   },
 };
 
@@ -117,10 +125,11 @@ export default function ServicesPage() {
           What We <Underline delay={0.3}>Offer</Underline>
         </h1>
         <p className="tk-svc-hero__intro">
-          Twenty-nine services across four categories — design, development, growth and platform
-          support. Every one is work we have actually shipped for paying clients, not a line item
-          on a menu. Tell us the outcome you need and we will tell you which of these gets you
-          there.
+          {services.length} services across {servicesByCategory.length} categories — design,
+          development on WordPress, Bubble.io, MERN, Next.js and PHP, automation and CRM in
+          GoHighLevel, n8n and Make.com, plus growth and platform support. Every one is work we have
+          actually shipped for paying clients, not a line item on a menu. Tell us the outcome you
+          need and we will tell you which of these gets you there.
         </p>
 
         <ul className="tk-svc-hero__meta">
@@ -133,8 +142,8 @@ export default function ServicesPage() {
         </ul>
 
         <div className="cluster tk-svc-hero__actions">
-          <Button href="/quote" size="lg" arrow>
-            Get a Free Quote
+          <Button href={CALENDLY_URL} size="lg" arrow>
+            Book a Call<span className="sr-only"> (opens in a new tab)</span>
           </Button>
           <Button href="/portfolio" size="lg" variant="ghost-light">
             View Our Work
@@ -173,22 +182,25 @@ export default function ServicesPage() {
       })}
 
       {/* How we work ------------------------------------------------------- */}
-      <SectionBand tone="light" width="narrow" labelledBy="process-heading">
+      {/* Tones alternate light/dark down the page; the five category bands
+          above end on light, so this one and everything after it flip. */}
+      <SectionBand tone="dark" width="narrow" labelledBy="process-heading">
         <SectionHeading
           id="process-heading"
+          onDark
           emphasis="Runs"
           kicker="The same four stages whichever service you start with — so you always know what happens next and who owes what."
         >
           How Every Project
         </SectionHeading>
-        <ProcessTimeline steps={processSteps} on="light" idPrefix="services-index" />
+        <ProcessTimeline steps={processSteps} on="dark" idPrefix="services-index" />
       </SectionBand>
 
-      <TrustedBy on="dark" limit={14} />
+      <TrustedBy on="light" />
 
       <ServiceFaqBand
         faqs={faqs}
-        tone="light"
+        tone="dark"
         kicker="Scope, cost, ownership and what happens after launch — answered plainly."
       />
 

@@ -241,6 +241,15 @@ a.tk-service-card--light:hover {
 }
 .tk-service-card:hover { transform: translateY(-5px); }
 
+/* Inside a LitWrap the 5px lift slides the card out from under the wrapper's
+   1px gradient gutter, erasing the lit top edge — the same defect that was
+   removed from project cards. Suppress the lift there and let the arrow-disc
+   hover carry the affordance; the DS lift still applies everywhere else. */
+.lit-wrap > .tk-service-card:hover,
+.lit-wrap-light > .tk-service-card:hover {
+  transform: none;
+}
+
 .tk-service-card--dark {
   background: var(--surface-card-on-dark);
   color: #fff;
@@ -372,13 +381,45 @@ a.tk-service-card--light:hover {
   display: block;
 }
 
-/* Fallback pattern for posts with no photograph — never an empty grey box */
+/* Fallback pattern for posts with no photograph — never an empty grey box.
+   The bottom padding clears the date pill parked at bottom-right so a long
+   title cannot run underneath it. */
 .tk-blog-card__well--generated {
-  background: linear-gradient(135deg, #0065FF 0%, #6900FD 100%);
   display: flex;
   align-items: flex-end;
-  padding: 18px;
+  padding: 18px 18px 46px;
 }
+
+/* The gradient has to be stated at two-class weight. The tone rules above
+   (`.tk-blog-card--dark .tk-blog-card__well`) are (0,2,0); the single-class
+   `--generated` modifier was (0,1,0) and lost to them regardless of source
+   order, so *every* image-less card was rendering the flat #EDEDED / #1C1C1E
+   well the brief calls out as a known defect of the old site. No post ships
+   with photography today, so that was every card on /blog, every card in the
+   "Keep reading" strip, and every card on a service page. */
+.tk-blog-card--dark .tk-blog-card__well--generated,
+.tk-blog-card--light .tk-blog-card__well--generated {
+  background: linear-gradient(135deg, #0065FF 0%, #6900FD 100%);
+}
+
+/* Badges sit ON that gradient. The category Badge defaults to the `action`
+   tone — #0065FF on a gradient whose first stop is #0065FF, i.e. an invisible
+   pill. White fill with a black label reads at 21:1, and the pill edge itself
+   is 4.9:1 against the blue end and 7.0:1 against the purple end. Both are
+   existing DS values (the `light` badge tone), not a new colour. */
+.tk-blog-card__well--generated .tk-badge--action {
+  background: #fff;
+  color: #000;
+  border-color: var(--border-hairline);
+}
+
+/* The date pill lands on the purple end, where its 22%-white edge is only
+   2.5:1 — under the 3:1 a non-text boundary needs. Its label is unaffected
+   (#fff on #1C1C1E is 17:1); only the edge moves. */
+.tk-blog-card__well--generated .tk-badge--dark {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
 .tk-blog-card__well-label {
   font-family: var(--font-heading);
   font-size: 17px;
@@ -423,9 +464,24 @@ a.tk-service-card--light:hover {
   gap: 12px;
   font-family: var(--font-body);
   height: 100%;
-  transition: transform var(--dur-base) var(--ease-standard);
+  transition: box-shadow var(--dur-base) var(--ease-standard);
 }
-.tk-project-card:hover { transform: translateY(-5px); }
+
+/* No lift on hover. ProjectCards render inside `.lit-wrap-light`, a 1px
+   gradient-border wrapper; translateY(-5px) slid the card out from under the
+   wrapper's top edge and the lit border visually vanished. The affordance is
+   now an inset ring in the interactive colour plus a soft drop shadow —
+   nothing moves, so the border survives. The ring is `inset` deliberately: an
+   outset spread would paint over the 1px wrapper gutter and replace the
+   gradient border with a flat blue one.
+   The ring is solid rather than tinted: at 40% alpha over the white card it
+   measured 1.97:1, too faint to register. Solid action-blue is 4.88:1 against
+   the card, clearing the 3:1 that a non-text state indicator needs. */
+.tk-project-card:hover {
+  box-shadow:
+    inset 0 0 0 1px var(--action-blue),
+    0 10px 28px rgba(0, 0, 0, 0.12);
+}
 
 .tk-project-card__name {
   margin: 0;
@@ -548,70 +604,6 @@ a.tk-service-card--light:hover {
 }
 
 /* --------------------------------------------------------------------------
-   NewsletterBand
-   -------------------------------------------------------------------------- */
-.tk-newsletter {
-  background: var(--brand-amber);
-  color: #000;
-  padding: 56px 64px;
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  flex-wrap: wrap;
-  font-family: var(--font-body);
-}
-.tk-newsletter__copy { flex: 1 1 320px; }
-.tk-newsletter__title {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: 40px;
-  font-weight: 800;
-  line-height: 1.15;
-}
-.tk-newsletter__sub {
-  margin: 10px 0 0;
-  font-size: 15.5px;
-  line-height: 1.55;
-  max-width: 480px;
-}
-.tk-newsletter__form {
-  flex: 1 1 380px;
-  display: flex;
-  gap: 12px;
-}
-.tk-newsletter__input {
-  flex: 1;
-  min-width: 0;
-  padding: 13px 16px;
-  font-size: 15px;
-  font-family: var(--font-body);
-  border: 1px solid transparent;
-  border-radius: var(--radius-button);
-  background: #fff;
-  color: #000;
-}
-.tk-newsletter__input:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-}
-
-/* Shown instead of the form while FORM_ENDPOINT is still the placeholder — the
-   band must never look like it is collecting addresses it cannot receive. */
-.tk-newsletter__fallback {
-  flex: 1 1 380px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
-}
-
-.tk-newsletter__fallback-note {
-  margin: 0;
-  font-size: 14.5px;
-  line-height: 1.55;
-}
-
-/* --------------------------------------------------------------------------
    Lit-edge gradient borders (from ds-extensions.css)
    1px gradient border, brightest at top, fading out by the bottom.
    -------------------------------------------------------------------------- */
@@ -668,15 +660,10 @@ a.tk-service-card--light:hover {
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .tk-heading__title { font-size: clamp(28px, 5.6vw, 44px); }
-  .tk-newsletter { padding: 40px 28px; gap: 28px; }
-  .tk-newsletter__title { font-size: clamp(26px, 6vw, 40px); }
 }
 
 @media (max-width: 560px) {
   .tk-container { padding: 0 20px; }
-  .tk-newsletter { padding: 32px 20px; }
-  .tk-newsletter__form { flex-direction: column; }
-  .tk-newsletter__form .tk-btn { justify-content: center; }
   .tk-service-card { padding: 24px; min-height: 0; }
   .tk-project-card { padding: 22px; }
   .tk-faq__button { padding: 16px; font-size: 16px; }

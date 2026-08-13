@@ -3,12 +3,12 @@ import { Container, FaqRow, Icon, SectionHeading, Underline } from '@/components
 import { Breadcrumbs, PageCta, SectionBand } from '@/components/site';
 import { ContactForm } from '@/components/site/forms/ContactForm';
 import '@/components/site/forms/forms.css';
-import { contact, faqs, socials } from '@/content/company';
+import { CALENDLY_URL, contact, faqs, socials } from '@/content/company';
 import { faqPage, JsonLd, professionalService, type JsonLdObject } from '@/lib/schema';
 import { absoluteUrl, buildMetadata, siteName, SITE_URL } from '@/lib/seo';
 
 const DESCRIPTION =
-  'Talk to the people who will actually build your site. Email business@tekvion.net, call +92 301 1114200, or send the form — we reply within one working day.';
+  'Talk to the people who will actually build your site. Book a 30-minute call, email business@tekvion.net or send the form — we reply within one working day.';
 
 export const metadata: Metadata = buildMetadata({
   title: 'Contact Us',
@@ -41,9 +41,15 @@ const expectations: Array<{ icon: string; term: string; detail: string }> = [
   },
   {
     icon: 'file-text',
-    term: 'Quote requests',
+    term: 'Project briefs',
     detail:
-      'Send a brief through the quote form and we come back with a written, itemised figure — usually within one working day of receiving enough detail to price it properly.',
+      'Send a brief through the form and we come back with a written, itemised figure — usually within one working day of receiving enough detail to price it properly.',
+  },
+  {
+    icon: 'calendar',
+    term: 'Booked calls',
+    detail:
+      'Pick a 30-minute slot on our booking page and you get a founder on the call, not a salesperson. Come with the problem; you do not need a specification written first.',
   },
   {
     icon: 'wrench',
@@ -73,8 +79,10 @@ export default function ContactPage() {
           Contact <Underline>Us</Underline>
         </h1>
         <p className="tk-page-hero__kicker">
-          Tell us what you are building — a new site, a rebuild, an application, or a site that
-          needs someone reliable looking after it. A founder reads every message that arrives here.
+          Tell us what you are building — a new site, a rebuild, a custom application in MERN,
+          Next.js or PHP, a GoHighLevel and automation set-up, or a site that needs someone reliable
+          looking after it. A founder reads every message that arrives here. Two ways in: book a
+          30-minute call, or send the form below.
         </p>
         <div className="tk-page-hero__meta">
           <span>
@@ -101,6 +109,23 @@ export default function ContactPage() {
             <aside className="tk-contact__aside" aria-label="Contact details">
               <div className="tk-info-card">
                 <p className="tk-info-card__label">
+                  <Icon name="calendar" size={14} />
+                  Book a call
+                </p>
+                <p className="tk-info-card__value">
+                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+                    Pick a 30-minute slot
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </p>
+                <p className="tk-info-card__note">
+                  Straight into a founder&apos;s calendar. Bring the problem — you do not need a
+                  specification written before we talk.
+                </p>
+              </div>
+
+              <div className="tk-info-card">
+                <p className="tk-info-card__label">
                   <Icon name="mail" size={14} />
                   Email
                 </p>
@@ -122,8 +147,8 @@ export default function ContactPage() {
                   <a href={contact.phoneHref}>{contact.phone}</a>
                 </p>
                 <p className="tk-info-card__note">
-                  Prefer to talk it through? Call, or send a message and we will book a 15-minute
-                  discovery call at a time that suits your timezone.
+                  Prefer to talk it through? Call us, or use the booking link above to take a
+                  30-minute slot at a time that suits your timezone.
                 </p>
               </div>
 

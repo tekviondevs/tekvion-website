@@ -21,8 +21,9 @@ import {
 } from './form-fields';
 
 /**
- * General enquiry form for /contact. Short on purpose — five fields, one of
- * them optional. Anyone with a scoped project is pointed at /quote instead.
+ * General enquiry form for /contact. Short on purpose — five fields, two of
+ * them optional. It is one of only two conversion paths on the site; the other
+ * is the Calendly booking page behind every "Book a Call" button.
  */
 
 /* Question, not a price list: we do not publish starting prices, so these are

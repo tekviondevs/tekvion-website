@@ -1,12 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Container, Icon, NewsletterBand } from '@/components/ds';
-import { featuredServices, services } from '@/content/services';
+import { Container, Icon } from '@/components/ds';
+import { CALENDLY_URL } from '@/content/company';
+import { getServices } from '@/content/services';
 import { contact, legalName, siteName, socials } from '@/lib/seo';
 
 /**
- * Site footer: positioning statement, four distinctly-headed link columns,
- * the newsletter band, and the legal fine print.
+ * Site footer: positioning statement, four distinctly-headed link columns, and
+ * the legal fine print.
+ *
+ * NOTE: the "Stay Updated" newsletter band was removed on purpose. We have no
+ * subscriber list, no sending infrastructure and no unsubscribe flow, so a
+ * signup box here would collect addresses we could not honestly service. Do not
+ * re-add it until a real subscriber flow exists — see README.
  */
 const companyLinks: Array<{ label: string; href: string }> = [
   { label: 'About Us', href: '/about' },
@@ -14,7 +20,21 @@ const companyLinks: Array<{ label: string; href: string }> = [
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact Us', href: '/contact' },
-  { label: 'Get a Free Quote', href: '/quote' },
+];
+
+/**
+ * Hand-picked footer service mix rather than `featuredServices` — six links have
+ * to carry the whole commercial spread: design, WordPress, custom code
+ * (Next.js/MERN), CRM and automation. The full list lives on /services, and
+ * `getServices` silently drops any slug that no longer exists.
+ */
+const FOOTER_SERVICE_SLUGS = [
+  'website-design',
+  'wordpress-development',
+  'nextjs-development',
+  'mern-stack-development',
+  'go-highlevel-development',
+  'ai-automation',
 ];
 
 const legalLinks: Array<{ label: string; href: string }> = [
@@ -25,12 +45,10 @@ const legalLinks: Array<{ label: string; href: string }> = [
 const currentYear = 2026;
 
 export function Footer() {
-  const footerServices = (featuredServices.length > 0 ? featuredServices : services).slice(0, 6);
+  const footerServices = getServices(FOOTER_SERVICE_SLUGS);
 
   return (
     <footer className="tk-footer">
-      <NewsletterBand />
-
       <div className="tk-footer__main">
         <Container>
           <div className="tk-footer__grid">
@@ -44,8 +62,9 @@ export function Footer() {
                 />
               </Link>
               <p className="tk-footer__positioning">
-                We design, build, launch and maintain fast websites and web apps — for coaching
-                brands, clinics, property firms, online stores, SaaS and AI products. Founded 2021.
+                We design, build, launch and maintain fast websites and web apps — on WordPress,
+                Bubble.io, MERN, Next.js and PHP — plus the CRM and automation work behind them in
+                GoHighLevel, n8n and Make.com. Founded 2021.
               </p>
               <div className="tk-footer__socials">
                 {socials.map((social) => (
@@ -83,6 +102,9 @@ export function Footer() {
                     {link.label}
                   </Link>
                 ))}
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+                  Book a Call<span className="sr-only"> (opens in a new tab)</span>
+                </a>
               </div>
             </div>
 

@@ -15,6 +15,8 @@ export interface ServiceListProps {
 }
 
 export function ServiceList({ items, marker = 'check', columns = 2, className }: ServiceListProps) {
+  if (items.length === 0) return null;
+
   return (
     <ul
       className={cx('tk-svc-list', columns === 2 ? 'tk-svc-list--two' : 'tk-svc-list--one', className)}

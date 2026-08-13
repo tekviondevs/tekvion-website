@@ -77,7 +77,7 @@ Seven colours, each with exactly one job — see `src/app/tokens.css`:
 
 - `#1E2EDD` / `#18D7D9` — identity gradient, **logo only**
 - `#6900FD` — purple, full-bleed bands only
-- `#FFAD00` — amber, emphasis only (heading underlines, newsletter band). Never buttons or links
+- `#FFAD00` — amber, emphasis only (heading underlines, `band--amber`). Never buttons or links
 - `#0065FF` — the only interactive colour: every button, link and active state
 - `#000000` / `#FFFFFF` — sections alternate pure black and pure white. No mid-grey backgrounds
 
@@ -129,7 +129,7 @@ Placeholder portraits (branded identity-gradient tiles with the member's initial
 ```
 public/team/jahanzaib-abid.jpg
 public/team/shaharyar-ansari.jpg
-public/team/suleman-buzdar.jpg
+public/team/ghulam-suleman.jpg
 ```
 
 Drop a real photo at the same path and filename — that is the only step. Portrait crop, ideally
@@ -138,22 +138,45 @@ via `onError`, so a missing or broken file degrades gracefully rather than showi
 
 ---
 
+## Conversion paths
+
+There are exactly two, and no others should be added without a decision from the founders:
+
+1. **Book a Call** — the primary CTA site-wide. Every one of them points at
+   `CALENDLY_URL` in `src/content/company.ts`
+   (`https://calendly.com/tekvion-innovations/30min`). It is off-site, so every anchor
+   opens in a new tab with `rel="noopener noreferrer"` and carries a visually-hidden
+   "(opens in a new tab)". The visible label is always exactly **Book a Call** — do not
+   reword it per page.
+2. **The contact form** at `/contact` — the secondary route, labelled "Contact us".
+
+The old `/quote` brief form and its page were **deleted deliberately**. Do not reinstate
+them: the booking page replaced them, and a third path would split the funnel.
+
 ## Forms
 
-All forms are static-safe: a plain `<form>` posting to a single endpoint constant.
+The contact form is static-safe: a plain `<form>` posting to a single endpoint constant.
 
 ```ts
 // src/content/company.ts
 export const FORM_ENDPOINT = 'https://formspree.io/f/REPLACE_ME';
 ```
 
-Replace `REPLACE_ME` with the real Formspree (or equivalent) form ID. The contact, quote and
-newsletter forms all post there. No API routes, no server runtime, no secrets in the repo.
+Replace `REPLACE_ME` with the real Formspree (or equivalent) form ID. No API routes, no server
+runtime, no secrets in the repo.
 
-While the placeholder is in place every form says so rather than pretending to work: the contact
-and quote forms render `EndpointNotice` and fall back to a pre-addressed `mailto:`, and the amber
-`NewsletterBand` swaps its input for an "Email to subscribe" button. All three switch to the real
-POST automatically the moment `FORM_ENDPOINT` no longer contains `REPLACE_ME`.
+While the placeholder is in place the form says so rather than pretending to work: it renders
+`EndpointNotice` and falls back to a pre-addressed `mailto:`, then switches to the real POST
+automatically the moment `FORM_ENDPOINT` no longer contains `REPLACE_ME`.
+
+### Newsletter (removed on purpose)
+
+The amber "Stay Updated" band and its `NewsletterBand` component were **deleted**, not hidden. We
+have no subscriber list, no sending infrastructure and no unsubscribe flow, so a signup box would
+collect addresses we could not honestly service — and the privacy policy now states plainly that we
+run no mailing list. Re-adding it means building the subscriber flow first, and updating
+`/privacy-policy` in the same change. `Footer.tsx` and `src/components/ds/index.ts` both carry a
+comment saying so.
 
 ## Analytics
 
@@ -184,12 +207,12 @@ in `src/app/layout.tsx` using `next/script` with `strategy="afterInteractive"`, 
 
 ### Pricing (deliberately unpublished)
 
-The site publishes **no prices, price bands or starting figures**, anywhere — not on `/quote`, not
-in `company.faqs`, not in Terms. No price for Tekvion work exists in the source records, and the
-prior site plan states the policy directly: *"Rather than publish ballpark numbers that may not
-apply to your project, we prefer to look at your brief and send back a fixed quote."* The budget
-selects on the contact and quote forms ask the client for a range; they are questions, never our
-rates. The cost blog post quotes **market** rates and says so. Do not add figures without written
+The site publishes **no prices, price bands or starting figures**, anywhere — not in
+`company.faqs`, not in Terms, not on any service page. No price for Tekvion work exists in the
+source records, and the prior site plan states the policy directly: *"Rather than publish ballpark
+numbers that may not apply to your project, we prefer to look at your brief and send back a fixed
+quote."* The budget select on the contact form asks the client for a range; it is a question, never
+our rates. The cost blog post quotes **market** rates and says so. Do not add figures without written
 confirmation from the founders, and if they are ever confirmed, change every one of those places
 in the same edit so the site never contradicts itself.
 

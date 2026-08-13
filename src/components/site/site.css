@@ -222,44 +222,13 @@
 /* --------------------------------------------------------------------------
    Trusted by band
    -------------------------------------------------------------------------- */
-.tk-trusted__names {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
-  margin-top: 44px;
-}
-
-.tk-trusted__name {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 16px 14px;
-  border-radius: var(--radius-card);
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 1.3;
-  min-height: 64px;
-}
-
-.tk-trusted--dark .tk-trusted__name {
-  background: var(--surface-card-on-dark);
-  color: #fff;
-  border: 1px solid var(--border-hairline-inverse);
-}
-
-.tk-trusted--light .tk-trusted__name {
-  background: #fff;
-  color: #000;
-  border: 1px solid var(--border-hairline);
-}
-
+/* No client-name chips: the band is carried by the verified proof numbers
+   alone, laid out 3 x 2 so it still reads as a deliberate section. */
 .tk-trusted__stats {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 48px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 16px;
+  margin-top: 52px;
 }
 
 .tk-trusted__note {
@@ -275,13 +244,9 @@
 }
 
 @media (max-width: 560px) {
-  .tk-trusted__names {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  }
-  .tk-trusted__name {
-    font-size: 13.5px;
-    min-height: 56px;
-    padding: 12px 10px;
+  .tk-trusted__stats {
+    margin-top: 40px;
+    gap: 16px 12px;
   }
 }
 

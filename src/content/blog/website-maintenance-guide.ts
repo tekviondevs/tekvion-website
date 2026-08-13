@@ -10,7 +10,7 @@ export const post: BlogPost = {
   tags: ['Website Maintenance', 'WordPress', 'Security', 'Backups', 'Performance'],
   publishedAt: '2026-02-10',
   readingMinutes: 10,
-  authorSlug: 'suleman-buzdar',
+  authorSlug: 'shaharyar-ansari',
   excerpt:
     'Most sites do not break on launch day — they decay quietly over the following year. This is what a maintenance plan should actually cover, how often each task should run, and how to tell a real agreement from a line item.',
   relatedServiceSlugs: [

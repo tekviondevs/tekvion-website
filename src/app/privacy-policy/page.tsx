@@ -78,8 +78,8 @@ export default function PrivacyPolicyPage() {
               <p className="callout__title">The short version</p>
               <ul>
                 <li>
-                  We collect what you type into our contact and quote forms, plus anything you send
-                  us by email or phone. Nothing more.
+                  We collect what you type into our contact form, what you enter when you book a
+                  call, plus anything you send us by email or phone. Nothing more.
                 </li>
                 <li>
                   We use it for one thing: to answer you and, if you become a client, to run the
@@ -144,14 +144,15 @@ export default function PrivacyPolicyPage() {
               get in touch.
             </p>
 
-            <h3>The quote form</h3>
+            <h3>Booking a call</h3>
             <p>
-              The <Link href="/quote">quote form</Link> asks for the same contact details plus the
-              details of the work: your current website if you have one, the type of project, any
-              platform preference, a budget range, a timeline, a description of what you want built,
-              and — optionally — how you found us. We use this to prepare a written quote and to
-              plan the project if you go ahead. The last field tells us which of our own channels
-              are worth continuing with; it is never used to profile you.
+              The &ldquo;Book a Call&rdquo; buttons take you to our scheduling page on Calendly, a
+              third-party service. Whatever you enter there — your name, your email address, the
+              slot you choose and anything you type into the notes field — is held by Calendly on
+              our behalf and passed to us so we can hold the meeting and prepare for it. Their own
+              privacy policy governs what happens on their page, and we have no control over it. If
+              you would rather not use them, email or call us instead and we will arrange a time by
+              hand.
             </p>
 
             <h3>Email, phone and messaging</h3>
@@ -160,14 +161,6 @@ export default function PrivacyPolicyPage() {
               correspondence so we have a record of what was discussed and agreed. Files you send us
               — briefs, brand assets, spreadsheets, credentials — are held only for as long as the
               work needs them.
-            </p>
-
-            <h3>Newsletter</h3>
-            <p>
-              If you subscribe to occasional updates from us, we store the email address you gave
-              and nothing else. We use it to send infrequent notes about our own work and articles.
-              Every message carries an unsubscribe link, and asking us to remove you by email works
-              just as well. We do not add clients or enquirers to that list automatically.
             </p>
 
             <h3>Server logs</h3>
@@ -191,6 +184,10 @@ export default function PrivacyPolicyPage() {
                 what to do with it.
               </li>
               <li>No special-category data. Please do not send us any through these forms.</li>
+              <li>
+                No mailing list. We run no newsletter and operate no subscriber list, so there is
+                nothing here that adds you to one.
+              </li>
             </ul>
 
             <h2 id="cookies">Cookies and tracking</h2>
@@ -222,8 +219,11 @@ export default function PrivacyPolicyPage() {
               </dd>
               <dt>Invoices and accounting records</dt>
               <dd>Kept for as long as tax and accounting law requires us to keep them.</dd>
-              <dt>Newsletter subscriptions</dt>
-              <dd>Kept until you unsubscribe or ask us to remove you.</dd>
+              <dt>Booked and cancelled meetings</dt>
+              <dd>
+                Kept in our calendar and in the scheduling account for as long as the enquiry is
+                live, then removed with the rest of the enquiry record.
+              </dd>
               <dt>Server logs</dt>
               <dd>Kept for the short retention window our hosting provider applies, then rotated out.</dd>
             </dl>
@@ -247,10 +247,14 @@ export default function PrivacyPolicyPage() {
                 between us.
               </li>
               <li>
-                <strong>A form relay service</strong>, if and when the contact and quote forms are
-                connected to one. Until that happens the forms fall back to opening a pre-addressed
-                message in your own email client, which means your enquiry travels straight from you
-                to us with no third party in the middle.
+                <strong>A form relay service</strong>, if and when the contact form is connected to
+                one. Until that happens the form falls back to opening a pre-addressed message in
+                your own email client, which means your enquiry travels straight from you to us with
+                no third party in the middle.
+              </li>
+              <li>
+                <strong>Calendly</strong>, our scheduling provider, which holds the details you
+                enter when you book a call and syncs the meeting to our calendar.
               </li>
               <li>
                 <strong>Project and accounting tools</strong> used to run client work — a shared
@@ -280,7 +284,7 @@ export default function PrivacyPolicyPage() {
               <li>correct anything that is wrong or out of date;</li>
               <li>delete what we hold, where we are not legally required to keep it;</li>
               <li>stop using your information for a particular purpose;</li>
-              <li>withdraw consent you previously gave, such as a newsletter subscription.</li>
+              <li>withdraw consent you previously gave.</li>
             </ul>
             <p>
               Email <a href={`mailto:${contact.email}`}>{contact.email}</a> with what you want and we
@@ -362,7 +366,6 @@ export default function PrivacyPolicyPage() {
       <PageCta
         title="Questions we have not answered here?"
         sub="Ask us directly. We would rather explain how something works than have you guess at it."
-        primaryLabel="Get a Free Quote"
       />
     </>
   );

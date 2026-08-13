@@ -31,6 +31,10 @@ export function ServiceCategorySection({
   headingEmphasis,
   tone,
 }: ServiceCategorySectionProps) {
+  /* A category with nothing in it renders nothing — never an eyebrow reading
+     "0 services" over an empty grid. */
+  if (services.length === 0) return null;
+
   const headingId = `${id}-heading`;
 
   return (

@@ -63,24 +63,46 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
   if (!service) notFound();
 
-  /* Related content. Anything that fails to resolve is dropped rather than
-     rendered as a broken card. */
+  /* Related content. Anything that fails to resolve to a real, publishable
+     project is dropped — and if nothing is left, the whole band goes with it.
+     Several services (graphic and visual design, for one) have no portfolio
+     work we can point at, and an empty "what we've shipped" grid is worse
+     than no section at all. */
   const relatedProjects = getProjects(service.relatedProjectSlugs).filter((project) =>
     showcaseSlugs.has(project.slug),
   );
   const relatedServices = getServices(service.relatedServiceSlugs);
   const relatedPosts = postsForService(service.slug);
 
-  /* The closing bands alternate black and white; the ones that only appear
-     sometimes take their tone from their position in the sequence. */
-  const tail: Array<'projects' | 'services' | 'posts'> = [];
-  if (relatedProjects.length > 0) tail.push('projects');
-  if (relatedServices.length > 0) tail.push('services');
-  if (relatedPosts.length > 0) tail.push('posts');
+  /* Every band on this page is conditional: none of them render a heading
+     over an empty list. Because any of them can drop out, the black / white
+     alternation is derived from the bands that actually render rather than
+     hard-coded, so the page never shows two identical surfaces in a row. */
+  type BandKey =
+    | 'what-you-get'
+    | 'process'
+    | 'deliverables'
+    | 'split'
+    | 'projects'
+    | 'services'
+    | 'posts'
+    | 'faqs';
 
-  const toneFor = (key: 'projects' | 'services' | 'posts'): 'dark' | 'light' =>
-    tail.indexOf(key) % 2 === 0 ? 'light' : 'dark';
-  const faqTone: 'dark' | 'light' = tail.length % 2 === 1 ? 'dark' : 'light';
+  const hasSplit = service.idealFor.length > 0 || service.techStack.length > 0;
+
+  const bands: BandKey[] = [];
+  if (service.whatYouGet.length > 0) bands.push('what-you-get');
+  if (service.process.length > 0) bands.push('process');
+  if (service.deliverables.length > 0) bands.push('deliverables');
+  if (hasSplit) bands.push('split');
+  if (relatedProjects.length > 0) bands.push('projects');
+  if (relatedServices.length > 0) bands.push('services');
+  if (relatedPosts.length > 0) bands.push('posts');
+  if (service.faqs.length > 0) bands.push('faqs');
+
+  /* The hero is black, so the first band after it is white. */
+  const toneFor = (key: BandKey): 'dark' | 'light' =>
+    bands.indexOf(key) % 2 === 0 ? 'light' : 'dark';
 
   const schema: JsonLdObject[] = [
     serviceSchema(service),
@@ -99,73 +121,98 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       <ServiceDetailHero service={service} titleId="service-title" />
 
       {/* What you get ------------------------------------------------------ */}
-      <SectionBand tone="light" labelledBy="what-you-get">
-        <SectionHeading
-          id="what-you-get"
-          emphasis="Get"
-          kicker="Included as standard on every engagement — not an upsell list."
-        >
-          What You
-        </SectionHeading>
-        <ServiceFeatureGrid features={service.whatYouGet} />
-      </SectionBand>
+      {service.whatYouGet.length > 0 ? (
+        <SectionBand tone={toneFor('what-you-get')} labelledBy="what-you-get">
+          <SectionHeading
+            id="what-you-get"
+            onDark={toneFor('what-you-get') === 'dark'}
+            emphasis="Get"
+            kicker="Included as standard on every engagement — not an upsell list."
+          >
+            What You
+          </SectionHeading>
+          <ServiceFeatureGrid features={service.whatYouGet} />
+        </SectionBand>
+      ) : null}
 
       {/* How we deliver ---------------------------------------------------- */}
-      <SectionBand tone="dark" width="narrow" labelledBy="how-we-deliver">
-        <SectionHeading
-          id="how-we-deliver"
-          onDark
-          emphasis="Deliver It"
-          kicker={`Stage by stage, with the approval points marked. ${service.title} follows the same rhythm on every project.`}
-        >
-          How We
-        </SectionHeading>
-        <ProcessTimeline steps={service.process} on="dark" idPrefix={`svc-${service.slug}`} />
-      </SectionBand>
+      {service.process.length > 0 ? (
+        <SectionBand tone={toneFor('process')} width="narrow" labelledBy="how-we-deliver">
+          <SectionHeading
+            id="how-we-deliver"
+            onDark={toneFor('process') === 'dark'}
+            emphasis="Deliver It"
+            kicker={`Stage by stage, with the approval points marked. ${service.title} follows the same rhythm on every project.`}
+          >
+            How We
+          </SectionHeading>
+          <ProcessTimeline
+            steps={service.process}
+            on={toneFor('process')}
+            idPrefix={`svc-${service.slug}`}
+          />
+        </SectionBand>
+      ) : null}
 
       {/* What you receive -------------------------------------------------- */}
-      <SectionBand tone="light" labelledBy="what-you-receive">
-        <SectionHeading
-          id="what-you-receive"
-          emphasis="Receive"
-          kicker="The concrete artefacts handed over at the end — files, access and documentation you keep."
-        >
-          What You
-        </SectionHeading>
-        <ServiceList items={service.deliverables} marker="check" columns={2} />
-      </SectionBand>
+      {service.deliverables.length > 0 ? (
+        <SectionBand tone={toneFor('deliverables')} labelledBy="what-you-receive">
+          <SectionHeading
+            id="what-you-receive"
+            onDark={toneFor('deliverables') === 'dark'}
+            emphasis="Receive"
+            kicker="The concrete artefacts handed over at the end — files, access and documentation you keep."
+          >
+            What You
+          </SectionHeading>
+          <ServiceList items={service.deliverables} marker="check" columns={2} />
+        </SectionBand>
+      ) : null}
 
       {/* Ideal for + tools we use ------------------------------------------ */}
-      <SectionBand tone="dark">
-        <div className="tk-svc-split">
-          <section aria-labelledby="ideal-for">
-            <h2 id="ideal-for" className="tk-svc-split__title">
-              Ideal for
-            </h2>
-            <p className="tk-svc-split__lead">
-              If two or three of these sound like your situation, this is the right place to start.
-            </p>
-            <ServiceList items={service.idealFor} marker="dot" columns={1} />
-          </section>
+      {hasSplit ? (
+        <SectionBand tone={toneFor('split')}>
+          <div
+            className={
+              service.idealFor.length > 0 && service.techStack.length > 0
+                ? 'tk-svc-split'
+                : 'tk-svc-split tk-svc-split--single'
+            }
+          >
+            {service.idealFor.length > 0 ? (
+              <section aria-labelledby="ideal-for">
+                <h2 id="ideal-for" className="tk-svc-split__title">
+                  Ideal for
+                </h2>
+                <p className="tk-svc-split__lead">
+                  If two or three of these sound like your situation, this is the right place to
+                  start.
+                </p>
+                <ServiceList items={service.idealFor} marker="dot" columns={1} />
+              </section>
+            ) : null}
 
-          <section aria-labelledby="tools-we-use">
-            <h2 id="tools-we-use" className="tk-svc-split__title">
-              Tools we use
-            </h2>
-            <p className="tk-svc-split__lead">
-              Standard, portable tooling. The licences, accounts and source stay in your name, so
-              nothing here is a reason you cannot leave.
-            </p>
-            <ul className="tk-svc-chips">
-              {service.techStack.map((tool) => (
-                <li key={tool}>
-                  <span className="tk-chip">{tool}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
-      </SectionBand>
+            {service.techStack.length > 0 ? (
+              <section aria-labelledby="tools-we-use">
+                <h2 id="tools-we-use" className="tk-svc-split__title">
+                  Tools we use
+                </h2>
+                <p className="tk-svc-split__lead">
+                  Standard, portable tooling. The licences, accounts and source stay in your name,
+                  so nothing here is a reason you cannot leave.
+                </p>
+                <ul className="tk-svc-chips">
+                  {service.techStack.map((tool) => (
+                    <li key={tool}>
+                      <span className="tk-chip">{tool}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
+          </div>
+        </SectionBand>
+      ) : null}
 
       {/* Related case studies ---------------------------------------------- */}
       {relatedProjects.length > 0 ? (
@@ -241,10 +288,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </SectionBand>
       ) : null}
 
-      {/* FAQs ---------------------------------------------------------------- */}
+      {/* FAQs — the band renders nothing at all when the list is empty. ------ */}
       <ServiceFaqBand
         faqs={service.faqs}
-        tone={faqTone}
+        tone={toneFor('faqs')}
         id={`${service.slug}-faqs`}
         kicker={`The questions we get asked most about ${service.title}.`}
       />

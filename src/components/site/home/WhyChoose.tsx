@@ -1,5 +1,5 @@
 import { Button, Container, Icon, Stat } from '@/components/ds';
-import { company, proofPoints, whyChoosePoints } from '@/content/company';
+import { CALENDLY_URL, company, proofPoints, whyChoosePoints } from '@/content/company';
 
 /**
  * "Why Choose Tekvion Innovations?" — ported from `sections-a.jsx`.
@@ -19,13 +19,14 @@ export function WhyChoose() {
             Why Choose <span className="home-why__wordmark">{company.name}?</span>
           </h2>
           <p className="home-why__intro">
-            {company.name} is a full-service web agency offering design, development, and support
-            for businesses of all sizes. Whether you are launching your first site or need an
-            upgrade, we are here to help. And here is why you should choose us:
+            {company.name} is a full-service web agency offering design, development, automation
+            and support for businesses of all sizes. Whether you are launching your first site,
+            rebuilding an app on a custom stack, or wiring up a CRM and the automations behind it,
+            we are here to help. And here is why you should choose us:
           </p>
 
-          <Button href="/quote" variant="secondary-dark" arrow>
-            Get a Free Quote
+          <Button href={CALENDLY_URL} variant="secondary-dark" arrow>
+            Book a Call<span className="sr-only"> (opens in a new tab)</span>
           </Button>
 
           <ul className="home-why__points">

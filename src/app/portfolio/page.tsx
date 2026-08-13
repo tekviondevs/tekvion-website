@@ -20,7 +20,7 @@ const PATH = '/portfolio';
 export const metadata: Metadata = buildMetadata({
   title: 'Portfolio — Websites & Web Apps We Have Built',
   description:
-    'Browse the real Tekvion portfolio: WordPress, Bubble.io and hybrid builds delivered for clients across four continents, with twelve full case studies inside.',
+    'Browse the real Tekvion portfolio: WordPress, Bubble.io and hybrid builds delivered for clients across four continents, with thirteen full case studies inside.',
   path: PATH,
 });
 

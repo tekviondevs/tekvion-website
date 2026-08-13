@@ -13,6 +13,7 @@ import { Breadcrumbs, PageCta, SectionBand } from '@/components/site';
 import { ProcessList, TeamCard } from '@/components/site/about';
 import '@/components/site/about/about.css';
 import {
+  CALENDLY_URL,
   company,
   contact,
   languagesShipped,
@@ -32,7 +33,7 @@ import { SITE_URL, absoluteUrl, buildMetadata } from '@/lib/seo';
 const PATH = '/about';
 
 const description =
-  'Meet the team behind Tekvion Innovations, a founder-led web studio in Islamabad building on WordPress and Bubble.io since 2021 — 49+ projects, 4 continents.';
+  'Meet the team behind Tekvion Innovations, a founder-led web studio in Islamabad building on WordPress, Bubble.io, MERN and Next.js since 2021 — 49+ projects.';
 
 export const metadata: Metadata = buildMetadata({
   title: 'About Tekvion Innovations — Our Story & Team',
@@ -112,12 +113,14 @@ export default function AboutPage() {
           {company.name} is a founder-led web design and development studio. We design, build,
           launch and maintain websites and web applications for coaching brands, clinics, property
           firms, e-commerce stores, education platforms, SaaS companies and AI products — on the
-          two stacks we know deeply, and with a team that stays on after launch.
+          stacks we know deeply, from WordPress and Bubble.io to custom MERN, Next.js and PHP
+          builds, with the CRM and automation work behind them, and a team that stays on after
+          launch.
         </p>
 
         <div className="cluster about-hero__actions">
-          <Button href="/quote" size="lg" arrow>
-            Start a project
+          <Button href={CALENDLY_URL} size="lg" arrow>
+            Book a Call<span className="sr-only"> (opens in a new tab)</span>
           </Button>
           <Button href="/portfolio" size="lg" variant="secondary-dark">
             See our work
@@ -172,13 +175,21 @@ export default function AboutPage() {
               with us for two years or more, which is the number we care about most.
             </p>
             <p>
-              We work on two stacks and know both deeply rather than claiming to cover everything.
-              WordPress carries the majority of our builds: custom themes and plugins, WooCommerce
-              stores, LMS and membership platforms, and multi-location service businesses.
-              Bubble.io carries our application work: marketplaces, AI and LLM products, reporting
-              and PDF engines, and the admin panels behind native mobile apps. Where a project needs
-              both, we build a hybrid — a fast marketing front end with the application on a
-              subdomain.
+              We pick the stack for the job rather than claiming to cover everything. WordPress
+              carries the majority of our builds: custom themes and plugins, WooCommerce stores, LMS
+              and membership platforms, and multi-location service businesses. Bubble.io carries our
+              no-code application work: marketplaces, AI and LLM products, reporting and PDF
+              engines, and the admin panels behind native mobile apps. When a product outgrows
+              no-code, we write it ourselves — MERN, Next.js and PHP — which is how The Boomerang
+              moved off Bubble.io onto a custom Next.js and Supabase application with its own
+              internal data panel.
+            </p>
+            <p>
+              The other half of the job is the operations layer around the site. We build out
+              GoHighLevel for CRM, pipelines, funnels and calendars, and we automate the work behind
+              it with n8n, Make.com and AI-driven workflows — the same n8n automations we run for
+              The Boomerang. Where a project needs both a marketing site and an application, we
+              build a hybrid: a fast front end with the app on a subdomain.
             </p>
 
             <div className="about-story__actions">
@@ -197,7 +208,8 @@ export default function AboutPage() {
                   </span>
                   <p className="about-facts__value">
                     <strong>42</strong> WordPress builds and <strong>7</strong> Bubble.io products,
-                    plus hybrid architectures that pair the two.
+                    plus custom MERN, Next.js and PHP work, GoHighLevel CRM build-outs, and n8n and
+                    Make.com automation.
                   </p>
                 </li>
                 <li>

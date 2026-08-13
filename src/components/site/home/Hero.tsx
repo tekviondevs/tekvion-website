@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Button, Container, Underline } from '@/components/ds';
+import { CALENDLY_URL } from '@/content/company';
 
 /**
  * Home hero — ported from the design export's `hero.jsx`.
@@ -20,13 +21,14 @@ export function Hero() {
             That Convert &amp; Scale with You
           </h1>
           <p className="home-hero__intro">
-            We design and build clean, high-performing websites — from coaching brands and
-            e-commerce stores to SaaS platforms and AI products. 49+ projects delivered across 4
-            continents since 2021.
+            We design and build clean, high-performing websites and web apps — WordPress,
+            Bubble.io, MERN, Next.js and PHP — and automate the business behind them with
+            GoHighLevel, AI, n8n and Make.com. 49+ projects delivered across 4 continents since
+            2021.
           </p>
           <div className="home-hero__actions cluster">
-            <Button href="/quote" size="lg" arrow>
-              Get a Free Quote
+            <Button href={CALENDLY_URL} size="lg" arrow>
+              Book a Call<span className="sr-only"> (opens in a new tab)</span>
             </Button>
             <Button href="/portfolio" size="lg" variant="secondary-light">
               View Our Work

@@ -7,6 +7,10 @@ import { post as websiteCost } from './blog/how-much-does-a-website-cost';
 import { post as multilingual } from './blog/multilingual-website-guide';
 import { post as aiIntegration } from './blog/ai-integration-for-small-business-websites';
 import { post as maintenance } from './blog/website-maintenance-guide';
+import { post as goHighLevel } from './blog/gohighlevel-guide-for-agencies';
+import { post as aiAutomation } from './blog/ai-automation-for-business-operations';
+import { post as n8nGuide } from './blog/n8n-workflow-automation-guide';
+import { post as makeVsN8n } from './blog/make-com-vs-n8n-automation-platforms';
 
 /** All posts, newest first. */
 export const posts: BlogPost[] = [
@@ -18,6 +22,10 @@ export const posts: BlogPost[] = [
   multilingual,
   aiIntegration,
   maintenance,
+  goHighLevel,
+  aiAutomation,
+  n8nGuide,
+  makeVsN8n,
 ].sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1));
 
 export const blogCategories: string[] = Array.from(

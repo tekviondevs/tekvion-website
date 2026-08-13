@@ -172,7 +172,7 @@ export const post: BlogPost = {
     { type: 'h2', text: 'The hybrid pattern: stop choosing' },
     {
       type: 'p',
-      text: 'For a growing number of our clients the right answer is both, split along a clean seam. The marketing site — home, pricing, features, blog, legal pages — is built for search and speed. The application lives on a subdomain such as app.yourdomain.com and is built for logic and iteration. We shipped LineaScore this way, with a WordPress landing site and the Bubble application on the app subdomain, and Boomerang with a Next.js marketing front end paired with a Bubble backend. The architecture holds up because the two halves talk over well-defined boundaries rather than sharing a codebase.',
+      text: 'For a growing number of our clients the right answer is both, split along a clean seam. The marketing site — home, pricing, features, blog, legal pages — is built for search and speed. The application lives on a subdomain such as app.yourdomain.com and is built for logic and iteration. We shipped LineaScore this way, with a WordPress landing site and the Bubble application on the app subdomain. The architecture holds up because the two halves talk over well-defined boundaries rather than sharing a codebase.',
     },
     {
       type: 'p',
