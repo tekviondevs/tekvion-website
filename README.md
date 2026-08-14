@@ -184,6 +184,12 @@ failed notification reports an error.
 Values come from hPanel → Emails → the mailbox → *Connect Apps & Devices* → manual configuration.
 Port `465` is implicit TLS; `587` is STARTTLS and needs `SMTP_SECURE=false`.
 
+> **Quote `SMTP_PASS`.** Unquoted, a `#` in the password starts a comment and everything after it is
+> discarded, so the server receives a truncated string and answers `535 authentication failed` —
+> indistinguishable from a genuinely wrong password. Single quotes also prevent `$` being expanded
+> and preserve trailing spaces. This bit us once already; it applies equally to `.env.local` and to
+> whatever sets the environment on the server.
+
 ### Requires a Node runtime
 
 The route sets `runtime = 'nodejs'` and `dynamic = 'force-dynamic'`. Nodemailer opens a TCP socket,
