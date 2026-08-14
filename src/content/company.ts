@@ -190,10 +190,19 @@ export const CALENDLY_URL = 'https://calendly.com/tekvion-innovations/30min';
 /* -------------------------------------------------------------------------- */
 
 /**
- * Static-safe form target. Every form on the site posts here.
- * Swap for a real Formspree (or equivalent) endpoint before launch — see README.
+ * Override for where forms POST.
+ *
+ * Leave this empty in normal operation: forms post to the site's own
+ * `/api/contact` route, which emails business@tekvion.net through the
+ * Hostinger mailbox and sends the enquirer an automated acknowledgement.
+ * SMTP settings come from server-side environment variables — see `.env.example`
+ * and the Email section of the README.
+ *
+ * Only set this to a third-party relay (Formspree or similar) if the site is
+ * ever deployed as pure static files with no Node runtime, where the API route
+ * cannot run.
  */
-export const FORM_ENDPOINT = 'https://formspree.io/f/REPLACE_ME';
+export const FORM_ENDPOINT = '';
 
 /* -------------------------------------------------------------------------- */
 /*  FAQs                                                                       */

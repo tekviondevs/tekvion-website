@@ -5,7 +5,7 @@ import { useState, type FormEvent } from 'react';
 import { Button, Icon } from '@/components/ds';
 import { contact } from '@/content/company';
 import {
-  EndpointNotice,
+  RateLimitNotice,
   FormNotice,
   Honeypot,
   HONEYPOT_NAME,
@@ -122,7 +122,7 @@ export function ContactForm() {
         Send us a message
       </h2>
 
-      <EndpointNotice />
+      {status === 'rateLimited' ? <RateLimitNotice /> : null}
 
       {status === 'error' ? (
         <FormNotice tone="error">

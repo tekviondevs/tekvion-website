@@ -153,21 +153,71 @@ There are exactly two, and no others should be added without a decision from the
 The old `/quote` brief form and its page were **deleted deliberately**. Do not reinstate
 them: the booking page replaced them, and a third path would split the funnel.
 
-## Forms
+## Forms and email
 
-The contact form is static-safe: a plain `<form>` posting to a single endpoint constant.
+The contact form POSTs to the site's own API route, `src/app/api/contact/route.ts`, which sends
+**two** emails through the Hostinger mailbox:
 
-```ts
-// src/content/company.ts
-export const FORM_ENDPOINT = 'https://formspree.io/f/REPLACE_ME';
-```
+1. a **notification** to `CONTACT_TO` (defaults to the SMTP user) with `Reply-To` set to the
+   enquirer, so replying from the inbox goes straight back to them;
+2. an **automated acknowledgement** to the enquirer, with `Reply-To` set to the studio mailbox.
 
-Replace `REPLACE_ME` with the real Formspree (or equivalent) form ID. No API routes, no server
-runtime, no secrets in the repo.
+The acknowledgement is best-effort: if it fails (bad address, remote server rejects it) the
+submission still counts as successful, because the enquiry itself already reached the inbox. Only a
+failed notification reports an error.
 
-While the placeholder is in place the form says so rather than pretending to work: it renders
-`EndpointNotice` and falls back to a pre-addressed `mailto:`, then switches to the real POST
-automatically the moment `FORM_ENDPOINT` no longer contains `REPLACE_ME`.
+### Setup
+
+1. Copy `.env.example` to `.env.local` and fill in the Hostinger SMTP values. `.env.local` is
+   gitignored. **Never** prefix these with `NEXT_PUBLIC_` — that would ship the password to the
+   browser.
+2. Verify the credentials before relying on them:
+
+   ```bash
+   npm run mail:verify                    # connect + authenticate only
+   npm run mail:verify -- you@example.com # also send a test message
+   ```
+
+3. On the server, set the same variables in the environment (Hostinger's Node app manager, a
+   systemd unit, a pm2 ecosystem file, or a `.env.local` deployed alongside the build).
+
+Values come from hPanel → Emails → the mailbox → *Connect Apps & Devices* → manual configuration.
+Port `465` is implicit TLS; `587` is STARTTLS and needs `SMTP_SECURE=false`.
+
+### Requires a Node runtime
+
+The route sets `runtime = 'nodejs'` and `dynamic = 'force-dynamic'`. Nodemailer opens a TCP socket,
+which the edge runtime cannot do, and SMTP credentials can only ever live server-side. The site
+therefore has to be deployed with `next start` (or an equivalent Node host) — **not** exported to
+static files.
+
+If it ever must ship as pure static, set `FORM_ENDPOINT` in `src/content/company.ts` to a
+third-party relay URL; the client posts there instead of `/api/contact` with no other change.
+
+### Behaviour and abuse handling
+
+| Condition | Response | What the visitor sees |
+|---|---|---|
+| Sent successfully | `200` | Success panel |
+| Field validation failed | `422` + per-field errors | Inline errors, focus moves to the first |
+| More than 5 posts in 10 minutes from one IP | `429` | Rate-limit notice with direct contact details |
+| SMTP not configured on this deployment | `503 not_configured` | Pre-filled `mailto:` fallback |
+| Send failed | `502` | Error notice plus the `mailto:` fallback |
+| Honeypot field filled | `200`, nothing sent | Success panel, so bots learn nothing |
+
+Validation runs **again** on the server — the client-side checks are for usability and are trivially
+bypassed. Submitted values are HTML-escaped before they reach the email templates, and CR/LF is
+stripped from anything used in a header to prevent header injection.
+
+Rate limiting is in-memory, so it is per-process and resets on deploy. That is correct for a single
+Node process on a VPS; put a shared store behind it before scaling horizontally.
+
+### Deliverability
+
+Because the site sends an automated reply, SPF/DKIM/DMARC matter more than usual — auto-replies to
+addresses that never opted in are the fastest way to earn a spam reputation. Confirm in hPanel that
+`tekvion.net` has an SPF record including Hostinger, DKIM enabled, and ideally a DMARC record. If
+the test message lands in spam, that is where to look first.
 
 ### Newsletter (removed on purpose)
 

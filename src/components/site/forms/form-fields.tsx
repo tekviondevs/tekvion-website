@@ -8,30 +8,39 @@ import './forms.css';
 /* ==========================================================================
    Shared form primitives and submission handling for the /contact form.
 
-   The form is static-safe: there is no server route and no database. It POSTs
-   JSON to FORM_ENDPOINT (a Formspree-style relay declared in
-   src/content/company.ts). Until that endpoint is swapped for a real one the
-   form stays usable — it falls back to a pre-filled mailto: so an enquiry is
-   never silently lost.
+   Submissions POST to the site's own API route (src/app/api/contact/route.ts),
+   which sends two emails through the Hostinger mailbox: a notification to the
+   studio and an automated acknowledgement to the enquirer. Credentials live in
+   server-side environment variables and never reach the browser.
+
+   The route answers 503 `not_configured` when SMTP is not set up on that
+   deployment. We surface that as its own state rather than a generic failure,
+   so the form falls back to a pre-filled mailto: and an enquiry is never
+   silently lost.
    ========================================================================== */
 
-/** Lifecycle of a submission. `unconfigured` = FORM_ENDPOINT is still a stub. */
+/** Lifecycle of a submission. `unconfigured` = the server has no SMTP set up. */
 export type FormStatus =
   | 'idle'
   | 'validating'
   | 'submitting'
   | 'success'
   | 'error'
+  | 'rateLimited'
   | 'unconfigured';
 
 export type FieldErrors = Record<string, string | undefined>;
 
 export type FormValues = Record<string, string>;
 
-/** The endpoint ships as `https://formspree.io/f/REPLACE_ME` until launch. */
-export const endpointConfigured = !FORM_ENDPOINT.includes('REPLACE_ME');
+/**
+ * Where submissions go. FORM_ENDPOINT stays exported from the content layer as
+ * an override hook for static-only deployments (where there is no API route);
+ * by default it is empty and we post to our own endpoint.
+ */
+export const SUBMIT_ENDPOINT = FORM_ENDPOINT || '/api/contact';
 
-/** Honeypot field name — Formspree drops any submission that carries it. */
+/** Honeypot field name — the API drops any submission that carries a value. */
 export const HONEYPOT_NAME = '_gotcha';
 
 /* -------------------------------------------------------------------------- */
@@ -143,22 +152,49 @@ export function useFormSubmission(): FormSubmission {
     const fallback = buildMailto(subject, buildPlainText(values, map));
     setMailtoHref(fallback);
 
-    if (!endpointConfigured) {
-      setStatus('unconfigured');
-      return;
-    }
-
     setStatus('submitting');
 
     try {
-      const response = await fetch(FORM_ENDPOINT, {
+      const response = await fetch(SUBMIT_ENDPOINT, {
         method: 'POST',
         headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...values, _subject: subject }),
       });
 
-      if (!response.ok) throw new Error(`Relay responded ${response.status}`);
-      setStatus('success');
+      if (response.ok) {
+        setStatus('success');
+        return;
+      }
+
+      /* The API distinguishes its failure modes so the form can respond
+         usefully instead of showing one catch-all error. */
+      const body = (await response.json().catch(() => null)) as
+        | { code?: string; errors?: FieldErrors }
+        | null;
+
+      if (response.status === 422 && body?.errors) {
+        setErrors(body.errors);
+        setStatus('idle');
+        const first = Object.keys(body.errors).find((key) => body.errors?.[key]);
+        if (first && typeof document !== 'undefined') {
+          const target = document.getElementById(first);
+          target?.focus();
+          target?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }
+        return;
+      }
+
+      if (response.status === 429) {
+        setStatus('rateLimited');
+        return;
+      }
+
+      if (response.status === 503 && body?.code === 'not_configured') {
+        setStatus('unconfigured');
+        return;
+      }
+
+      throw new Error(`Contact endpoint responded ${response.status}`);
     } catch {
       setStatus('error');
     }
@@ -436,17 +472,21 @@ export function FormNotice({ tone = 'info', icon, children }: FormNoticeProps) {
   );
 }
 
-/** Shown above every form while the relay is still a placeholder. */
-export function EndpointNotice() {
-  if (endpointConfigured) return null;
-
+/**
+ * Shown when the submitter has tripped the endpoint's rate limit.
+ *
+ * There is no eager "not connected yet" banner any more: whether the mailbox
+ * is configured is a server-side fact we only learn on submit, and the
+ * `unconfigured` status renders its own mailto fallback at that point.
+ */
+export function RateLimitNotice() {
   return (
     <FormNotice tone="warn" icon="circle-alert">
       <p>
-        <strong>This form is not connected to a mailbox yet.</strong> Fill it in and we will open a
-        pre-addressed email containing everything you typed, so nothing is lost. You can also write
-        to <a href={`mailto:${contact.email}`}>{contact.email}</a> or call{' '}
-        <a href={contact.phoneHref}>{contact.phone}</a> directly.
+        <strong>That is a few messages in a short space of time.</strong> Please wait a little
+        before sending another, or reach us directly at{' '}
+        <a href={`mailto:${contact.email}`}>{contact.email}</a> or{' '}
+        <a href={contact.phoneHref}>{contact.phone}</a>.
       </p>
     </FormNotice>
   );
