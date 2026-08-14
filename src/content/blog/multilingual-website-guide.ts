@@ -20,7 +20,7 @@ export const post: BlogPost = {
     },
     {
       type: 'p',
-      text: 'We have shipped sites in English, German, French, Italian, Hebrew, Polish, Dutch and Norwegian — a Hebrew right-to-left e-learning platform serving certification courses across Israel, German healthcare and clinic sites, a Dutch WooCommerce store for a sustainable cosmetics brand, a Norwegian retail catalogue, a Polish wellness and education site. Across 49 delivered projects on four continents, the multilingual builds are the ones where the technical groundwork pays for itself fastest, and where shortcuts cost the most to unwind.',
+      text: 'We have shipped sites in English, German, French, Italian, Hebrew, Polish, Dutch and Norwegian — a Hebrew right-to-left e-learning platform serving certification courses across Israel, German healthcare and clinic sites, a Dutch WooCommerce store for a sustainable cosmetics brand, a Norwegian retail catalogue, a Polish wellness and education site. Across 50 delivered builds on four continents, the multilingual builds are the ones where the technical groundwork pays for itself fastest, and where shortcuts cost the most to unwind.',
     },
     {
       type: 'p',
@@ -195,7 +195,7 @@ export const post: BlogPost = {
     { type: 'h2', text: 'Choosing the WordPress translation stack' },
     {
       type: 'p',
-      text: '42 of our 49 delivered projects are WordPress builds, so this is the decision we make most often. There is no universally correct answer; there is a correct answer for the size of your content set, your editorial workflow and your budget for ongoing maintenance.',
+      text: '42 of our 50 delivered builds are WordPress builds, so this is the decision we make most often. There is no universally correct answer; there is a correct answer for the size of your content set, your editorial workflow and your budget for ongoing maintenance.',
     },
     {
       type: 'table',

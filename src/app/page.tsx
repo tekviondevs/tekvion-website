@@ -16,7 +16,7 @@ import '@/components/site/home/home.css';
 export const metadata: Metadata = buildMetadata({
   title: 'Web Design & Development Agency',
   description:
-    'Tekvion Innovations builds WordPress sites, Bubble.io and custom MERN, Next.js and PHP apps, plus GoHighLevel and AI automation — 49+ projects delivered.',
+    'Tekvion Innovations builds WordPress sites, Bubble.io and custom MERN, Next.js and PHP apps, plus GoHighLevel and AI automation — 50+ projects delivered.',
   path: '/',
 });
 

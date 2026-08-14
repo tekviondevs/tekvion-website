@@ -35,7 +35,7 @@ export const post: BlogPost = {
     },
     {
       type: 'p',
-      text: 'Across 49 delivered projects — 42 on WordPress and 7 on Bubble.io — we have settled on a sequence that keeps the visible improvement and the invisible equity. This is that checklist, in the order we actually run it. Work through it and a redesign becomes a step up rather than a reset.',
+      text: 'Across 50 delivered builds — 42 on WordPress, 5 on Bubble.io, one hybrid build and one custom Next.js application — we have settled on a sequence that keeps the visible improvement and the invisible equity. This is that checklist, in the order we actually run it. Work through it and a redesign becomes a step up rather than a reset.',
     },
 
     { type: 'h2', text: 'Why redesigns lose traffic in the first place' },

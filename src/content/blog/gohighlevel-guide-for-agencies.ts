@@ -242,7 +242,7 @@ export const post: BlogPost = {
     { type: 'h2', text: 'How we approach GoHighLevel at Tekvion' },
     {
       type: 'p',
-      text: 'Across 49-plus delivered projects, the pattern we trust is unglamorous: decide the architecture before touching the builder, then automate one motion at a time.',
+      text: 'Across 50-plus delivered builds, the pattern we trust is unglamorous: decide the architecture before touching the builder, then automate one motion at a time.',
     },
     {
       type: 'ol',

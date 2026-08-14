@@ -1,5 +1,6 @@
 import { Container, SectionHeading, Stat } from '@/components/ds';
 import { cx } from '@/components/ds/cx';
+import { proofPoints } from '@/content/company';
 
 /**
  * Replaces the mockup's fictional testimonial carousel. A credibility band
@@ -16,15 +17,13 @@ export interface TrustedByProps {
   className?: string;
 }
 
-/** Verified figures only — see the brand facts in src/lib/seo.ts and the brief. */
-const proof: Array<{ value: string; label: string }> = [
-  { value: '49+', label: 'projects delivered' },
-  { value: '42', label: 'WordPress builds' },
-  { value: '7', label: 'Bubble.io builds' },
-  { value: '4', label: 'continents served' },
-  { value: '10+', label: 'countries with live sites' },
-  { value: '2+', label: 'years average client stay' },
-];
+/**
+ * Verified figures only, imported from the single source of truth in
+ * src/content/company.ts — this band used to keep its own copy of the numbers,
+ * which is exactly how the stack split drifted out of date. Never re-inline
+ * them here; edit proofPoints instead and every surface follows.
+ */
+const proof = proofPoints;
 
 export function TrustedBy({
   on = 'dark',

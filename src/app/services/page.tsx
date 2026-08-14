@@ -17,7 +17,7 @@ import { absoluteUrl, buildMetadata } from '@/lib/seo';
 export const metadata: Metadata = buildMetadata({
   title: 'Web Design, Development & Automation Services',
   description:
-    'Design, development, automation and support services from a studio with 49+ delivered projects on WordPress, Bubble.io, MERN, Next.js, PHP and GoHighLevel.',
+    'Design, development, automation and support services from a studio with 50+ delivered projects on WordPress, Bubble.io, MERN, Next.js, PHP and GoHighLevel.',
   path: '/services',
 });
 
@@ -96,7 +96,7 @@ const serviceItemList: JsonLdObject = {
 const heroFacts: string[] = [
   `${services.length} services`,
   `${servicesByCategory.length} categories`,
-  '49+ projects delivered',
+  '50+ projects delivered',
 ];
 
 export default function ServicesPage() {

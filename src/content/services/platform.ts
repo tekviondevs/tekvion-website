@@ -5,7 +5,8 @@ import type { Service } from '@/content/types';
  *
  * Everything that happens after launch, plus the plumbing that keeps a site
  * fast, safe, connected and usable. Grounded in Tekvion's real delivery
- * record: 42 WordPress builds, 7 Bubble.io products, Kinsta-hosted estates,
+ * record: 42 WordPress builds, 5 Bubble.io products, a hybrid platform and a
+ * custom Next.js application, Kinsta-hosted estates,
  * multilingual and RTL work, and clients who stay with us for 2+ years.
  */
 export const platformServices: Service[] = [
@@ -141,7 +142,7 @@ export const platformServices: Service[] = [
       {
         question: 'Can you maintain a Bubble.io application too?',
         answer:
-          'We can. Bubble handles its own platform updates, so the work looks different: we watch for workflow and plugin breakages after Bubble version releases, monitor API integrations and third-party keys, manage database and privacy-rule changes, keep an eye on workload units, and deploy changes from development to live safely. We have delivered seven Bubble products, including hybrid builds paired with a WordPress or Next.js front end.',
+          'We can. Bubble handles its own platform updates, so the work looks different: we watch for workflow and plugin breakages after Bubble version releases, monitor API integrations and third-party keys, manage database and privacy-rule changes, keep an eye on workload units, and deploy changes from development to live safely. We have delivered Bubble products including hybrid builds paired with a WordPress front end, and we have migrated one off Bubble entirely onto a custom Next.js application.',
       },
       {
         question: 'Is there a minimum contract?',
@@ -608,7 +609,7 @@ export const platformServices: Service[] = [
       'Put AI to work inside your website or product where it genuinely saves time, not as a novelty chat bubble.',
     metaTitle: 'AI & LLM Integration for Websites and Web Apps',
     metaDescription:
-      'AI and LLM integration for websites and apps: assistants, content tools and automations built on real product experience across seven Bubble.io builds.',
+      'AI and LLM integration for websites and apps: assistants, content tools and automations built on real product experience across our Bubble.io and custom builds.',
     heroTitle: 'AI and LLM integration for websites, apps and internal workflows',
     heroIntro:
       'We have shipped AI-powered products, not just AI features: an adaptive interview coach, a multi-model image generation suite for tattoo artists, and a research platform with graph-based data display. That experience is why we start by asking which task the model is actually better at than your current process, and why we design around the fact that models are confidently wrong sometimes.',

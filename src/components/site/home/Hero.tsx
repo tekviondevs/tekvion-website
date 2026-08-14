@@ -23,7 +23,7 @@ export function Hero() {
           <p className="home-hero__intro">
             We design and build clean, high-performing websites and web apps — WordPress,
             Bubble.io, MERN, Next.js and PHP — and automate the business behind them with
-            GoHighLevel, AI, n8n and Make.com. 49+ projects delivered across 4 continents since
+            GoHighLevel, AI, n8n and Make.com. 50+ projects delivered across 4 continents since
             2021.
           </p>
           <div className="home-hero__actions cluster">

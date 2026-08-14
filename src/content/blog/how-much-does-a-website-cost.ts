@@ -20,7 +20,7 @@ export const post: BlogPost = {
     },
     {
       type: 'p',
-      text: 'We have delivered 49+ projects — 42 on WordPress and 7 on Bubble.io — for clients across four continents, from a single Berlin day clinic landing page to a Hebrew, right-to-left e-learning platform and a UK flooring retailer supporting more than 220 showrooms. Looking back across all of them, the cost gap almost never came down to page count. It came down to decisions made in the first two weeks: how much of the design was bespoke, how much custom logic sat behind the pretty layer, how many languages had to be maintained, and who was writing the content.',
+      text: 'We have delivered 50+ projects — 42 on WordPress, 5 on Bubble.io, one hybrid WordPress-and-Bubble platform and one custom Next.js application — for clients across four continents, from a single Berlin day clinic landing page to a Hebrew, right-to-left e-learning platform and a UK flooring retailer supporting more than 220 showrooms. Looking back across all of them, the cost gap almost never came down to page count. It came down to decisions made in the first two weeks: how much of the design was bespoke, how much custom logic sat behind the pretty layer, how many languages had to be maintained, and who was writing the content.',
     },
     {
       type: 'p',
@@ -183,7 +183,7 @@ export const post: BlogPost = {
     },
     {
       type: 'p',
-      text: 'WordPress remains the most economical route for content sites, service businesses, multi-location operators and most e-commerce. Editors can maintain it, hosting is competitive, and the plugin ecosystem removes whole categories of custom work — which is why 42 of our 49 builds run on it. Bubble.io earns its higher build cost when the product is the logic: accounts, roles, dashboards, marketplaces, document generation, AI features. We have used it for an on-demand research platform with a graph-based data display, an adaptive LLM-driven mock-interview product, and an AI image suite for professional tattoo artists — none of which would have been sensible as WordPress builds.',
+      text: 'WordPress remains the most economical route for content sites, service businesses, multi-location operators and most e-commerce. Editors can maintain it, hosting is competitive, and the plugin ecosystem removes whole categories of custom work — which is why 42 of our 50 builds run on it. Bubble.io earns its higher build cost when the product is the logic: accounts, roles, dashboards, marketplaces, document generation, AI features. We have used it for an on-demand research platform with a graph-based data display, an adaptive LLM-driven mock-interview product, and an AI image suite for professional tattoo artists — none of which would have been sensible as WordPress builds.',
     },
     {
       type: 'p',

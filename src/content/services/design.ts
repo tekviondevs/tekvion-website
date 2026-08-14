@@ -20,10 +20,10 @@ export const designServices: Service[] = [
       'Conversion-focused website design that looks like your brand and gives visitors an obvious reason to get in touch.',
     metaTitle: 'Website Design Services That Convert Visitors',
     metaDescription:
-      'Custom website design from a studio with 49+ delivered projects. Page-by-page layouts, mobile-first design and build-ready files for WordPress developers.',
+      'Custom website design from a studio with 50+ delivered projects. Page-by-page layouts, mobile-first design and build-ready files for WordPress developers.',
     heroTitle: 'Website design that earns attention and then converts it',
     heroIntro:
-      'We design websites that look like your brand and behave like your best salesperson. Every page is planned around the decision a visitor needs to make, designed mobile-first, and handed over as a build-ready system rather than a flat picture. Across 49 delivered projects and eight shipping languages, that approach has held up on coaching brands, clinics, retailers and B2B manufacturers alike.',
+      'We design websites that look like your brand and behave like your best salesperson. Every page is planned around the decision a visitor needs to make, designed mobile-first, and handed over as a build-ready system rather than a flat picture. Across 50 delivered builds and eight shipping languages, that approach has held up on coaching brands, clinics, retailers and B2B manufacturers alike.',
     whatYouGet: [
       {
         title: 'Page-by-page design, not a template skin',
@@ -159,7 +159,7 @@ export const designServices: Service[] = [
       'UI/UX design for web apps, dashboards, marketplaces and admin panels. User flows, wireframes, component libraries and clickable prototypes, ready to build.',
     heroTitle: 'UI/UX design that makes a complex product feel obvious',
     heroIntro:
-      'Marketing pages have to persuade once; product interfaces have to be used, sometimes every working day. We design the flows, screens and states behind web applications, dashboards, booking systems and content-heavy sites. That includes the seven Bubble.io products we have shipped and the web admin panels running behind live mobile apps.',
+      'Marketing pages have to persuade once; product interfaces have to be used, sometimes every working day. We design the flows, screens and states behind web applications, dashboards, booking systems and content-heavy sites. That includes the Bubble.io products we have shipped and the web admin panels running behind live mobile apps.',
     whatYouGet: [
       {
         title: 'User and task mapping',
@@ -247,7 +247,7 @@ export const designServices: Service[] = [
       {
         question: 'Do you design specifically for Bubble.io builds?',
         answer:
-          'Yes. We have shipped seven Bubble.io applications, so we design knowing what Bubble does cheaply and what it fights. Repeating groups, responsive engine behaviour, native input limitations and page-load patterns all shape the design before it reaches the editor. The result is a design that ships close to what you approved, rather than one quietly compromised during the build.',
+          'Yes. We have shipped Bubble.io applications across marketplaces, AI tools and reporting platforms, so we design knowing what Bubble does cheaply and what it fights. Repeating groups, responsive engine behaviour, native input limitations and page-load patterns all shape the design before it reaches the editor. The result is a design that ships close to what you approved, rather than one quietly compromised during the build.',
       },
       {
         question: 'Can you improve an existing product without a full redesign?',

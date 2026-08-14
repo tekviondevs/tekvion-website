@@ -1298,7 +1298,10 @@ export const projects: Project[] = [
     descriptor: 'Bubble.io to Custom MERN & Next.js Platform',
     url: 'https://www.theboomerang.co/',
     industry: 'AI & SaaS Products',
-    stack: 'Hybrid',
+    /* Counted as a custom Next.js build, not a hybrid: the Bubble.io phase was
+       the engagement we replaced, and what runs today is a Next.js/MERN
+       application on Supabase. LineaScore remains the one true hybrid. */
+    stack: 'Next.js',
     tech: [
       'Next.js',
       'React',

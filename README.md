@@ -231,7 +231,8 @@ in the same edit so the site never contradicts itself.
 These live in two places on purpose: `src/lib/seo.ts` for the SEO/chrome layer and
 `src/content/company.ts` for page copy. Change both together.
 
-Approved proof numbers: 49+ projects delivered · 42 WordPress builds · 7 Bubble.io builds ·
+Approved proof numbers: 50+ projects delivered · 42 WordPress builds · 5 Bubble.io builds ·
+1 hybrid build (WordPress + Bubble.io) · 1 custom Next.js build ·
 4 continents · clients in 10+ countries · 10+ years combined experience · most clients stay 2+ years.
 Nothing else may be presented as a metric, and there are no client testimonials on record — the
 `TrustedBy` band shows real client brand names only.

@@ -77,7 +77,7 @@ export default function PortfolioPage() {
           Our <Underline>Portfolio</Underline>
         </h1>
         <p className="lead muted tk-pf-hero__lead">
-          49+ projects across four continents since 2021. Everything listed below is a real,
+          50+ projects across four continents since 2021. Everything listed below is a real,
           delivered build with a URL you can open right now — {orderedProjects.length} of them,
           including {featuredProjects.length} with a full case study on how they were made.
         </p>

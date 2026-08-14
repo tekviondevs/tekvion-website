@@ -33,7 +33,7 @@ import { SITE_URL, absoluteUrl, buildMetadata } from '@/lib/seo';
 const PATH = '/about';
 
 const description =
-  'Meet the team behind Tekvion Innovations, a founder-led web studio in Islamabad building on WordPress, Bubble.io, MERN and Next.js since 2021 — 49+ projects.';
+  'Meet the team behind Tekvion Innovations, a founder-led web studio in Islamabad building on WordPress, Bubble.io, MERN and Next.js since 2021 — 50+ projects.';
 
 export const metadata: Metadata = buildMetadata({
   title: 'About Tekvion Innovations — Our Story & Team',
@@ -168,7 +168,7 @@ export default function AboutPage() {
               progress you can actually see, and code and credentials that belong to you at the end.
             </p>
             <p>
-              Forty-nine projects later that has not changed. We have delivered across four
+              Fifty builds later that has not changed. We have delivered across four
               continents, with live clients in more than ten countries, and we have shipped
               production sites in eight languages — including a right-to-left Hebrew e-learning
               platform and multi-language clinic and coaching sites. Most of our clients have been
@@ -207,9 +207,10 @@ export default function AboutPage() {
                     <Icon name="layers" size={16} /> Delivery stacks
                   </span>
                   <p className="about-facts__value">
-                    <strong>42</strong> WordPress builds and <strong>7</strong> Bubble.io products,
-                    plus custom MERN, Next.js and PHP work, GoHighLevel CRM build-outs, and n8n and
-                    Make.com automation.
+                    <strong>42</strong> WordPress builds, <strong>5</strong> Bubble.io products,{' '}
+                    <strong>1</strong> hybrid WordPress-and-Bubble platform and{' '}
+                    <strong>1</strong> custom Next.js application, plus MERN and PHP work,
+                    GoHighLevel CRM build-outs, and n8n and Make.com automation.
                   </p>
                 </li>
                 <li>

@@ -30,9 +30,9 @@ export const company: CompanyProfile = {
   tagline: 'Think. Build. Launch.',
   foundedYear: 2021,
   positioning:
-    'Tekvion Innovations is a founder-led web design and development studio, established in 2021 and based in Islamabad, Pakistan. We build on the stacks we know deeply: WordPress for content sites, WooCommerce stores, learning platforms and multi-location service businesses; Bubble.io for no-code applications, marketplaces, AI and LLM products, and the admin panels behind native mobile apps; and custom engineering in the MERN stack, Next.js and PHP when a product needs its own codebase. We also automate the business around the site — GoHighLevel CRM build-outs, AI automation, and workflow automation in n8n and Make.com. Forty-nine projects later we still work the same way — a written scope before a line of code, weekly progress you can see, code and credentials that belong to you, and a team that stays on after launch. Most of our clients have been with us for two years or more.',
+    'Tekvion Innovations is a founder-led web design and development studio, established in 2021 and based in Islamabad, Pakistan. We build on the stacks we know deeply: WordPress for content sites, WooCommerce stores, learning platforms and multi-location service businesses; Bubble.io for no-code applications, marketplaces, AI and LLM products, and the admin panels behind native mobile apps; and custom engineering in the MERN stack, Next.js and PHP when a product needs its own codebase. We also automate the business around the site — GoHighLevel CRM build-outs, AI automation, and workflow automation in n8n and Make.com. Fifty builds later we still work the same way — a written scope before a line of code, weekly progress you can see, code and credentials that belong to you, and a team that stays on after launch. Most of our clients have been with us for two years or more.',
   elevatorPitch:
-    'We design, build, launch and maintain websites and web applications for businesses that need the work done properly — 49+ projects delivered across 4 continents since 2021.',
+    'We design, build, launch and maintain websites and web applications for businesses that need the work done properly — 50+ projects delivered across 4 continents since 2021.',
 };
 
 /* -------------------------------------------------------------------------- */
@@ -59,9 +59,16 @@ export const socials: SocialLink[] = [
 /* -------------------------------------------------------------------------- */
 
 export const proofPoints: ProofPoint[] = [
-  { value: '49+', label: 'Projects delivered' },
+  /* The stack split is traceable and sums exactly to the 50 delivered builds:
+     42 WordPress + 5 Bubble.io + 1 hybrid (LineaScore, a WordPress landing over
+     a Bubble app) + 2 custom Next.js (The Boomerang, rebuilt off Bubble.io, and
+     FreeToolsGrid, our own free-tools product). The original source record was
+     49 client projects; FreeToolsGrid takes the total to 50. */
+  { value: '50+', label: 'Projects delivered' },
   { value: '42', label: 'WordPress builds' },
-  { value: '7', label: 'Bubble.io builds' },
+  { value: '5', label: 'Bubble.io builds' },
+  { value: '1', label: 'Hybrid build' },
+  { value: '2', label: 'Custom Next.js builds' },
   { value: '4', label: 'Continents served' },
   { value: '10+', label: 'Countries with live clients' },
   { value: '10+', label: 'Years combined experience' },
@@ -206,7 +213,7 @@ export const faqs: Faq[] = [
   {
     question: 'Which platforms do you build on?',
     answer:
-      'WordPress is our primary stack — 42 of our 49 delivered projects run on it, covering custom themes and plugins, WooCommerce stores, LMS and membership builds, and multilingual sites across eight languages including right-to-left Hebrew. For products with real application logic we build on Bubble.io, where we have shipped seven live products: marketplaces, AI and LLM tools, reporting and PDF engines, admin panels behind native mobile apps. When a product outgrows no-code, or needs to be owned outright, we write it ourselves in the MERN stack, Next.js or PHP — that is how we rebuilt The Boomerang off Bubble.io onto a custom Next.js and Supabase application. Alongside the build we set up the operations layer: GoHighLevel for CRM, pipelines and funnels, and n8n, Make.com and AI automation for the workflows behind it.',
+      'WordPress is our primary stack — 42 of our 50 delivered builds run on it, covering custom themes and plugins, WooCommerce stores, LMS and membership builds, and multilingual sites across eight languages including right-to-left Hebrew. For products with real application logic we build on Bubble.io, where we have shipped five live products plus one hybrid platform running a WordPress front end over a Bubble app: marketplaces, AI and LLM tools, reporting and PDF engines, admin panels behind native mobile apps. When a product outgrows no-code, or needs to be owned outright, we write it ourselves in the MERN stack, Next.js or PHP — that is how we rebuilt The Boomerang off Bubble.io onto a custom Next.js and Supabase application, and how we built our own free-tools product FreeToolsGrid. Alongside the build we set up the operations layer: GoHighLevel for CRM, pipelines and funnels, and n8n, Make.com and AI automation for the workflows behind it.',
   },
   {
     question: 'Will I own the website and the code?',

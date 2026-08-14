@@ -433,7 +433,7 @@ export const growthServices: Service[] = [
       {
         question: 'Can you improve conversion on a Bubble.io application?',
         answer:
-          'Yes. We have built seven Bubble.io products including AI tools and marketplace admin platforms, so we can work directly inside the application on signup flows, onboarding steps, pricing pages, empty states and activation prompts. For SaaS the meaningful conversion is usually activation or trial-to-paid rather than a form submission, so we instrument and optimise against that instead.',
+          'Yes. We have built Bubble.io products including AI tools and marketplace admin platforms, so we can work directly inside the application on signup flows, onboarding steps, pricing pages, empty states and activation prompts. For SaaS the meaningful conversion is usually activation or trial-to-paid rather than a form submission, so we instrument and optimise against that instead.',
       },
       {
         question: 'How long does a CRO engagement take?',

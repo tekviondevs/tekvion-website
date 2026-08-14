@@ -227,7 +227,7 @@ export const post: BlogPost = {
     },
     {
       type: 'p',
-      text: 'The AI side comes from product work: an on-demand technology research platform, an adaptive interview-practice application and an image-generation suite for tattoo artists — all systems where model output had to be structured, evaluated and paid for at volume rather than demonstrated once. Across 49-plus delivered projects, the pattern that holds is unromantic: the automations that survive are narrow, observed, reversible and owned by somebody.',
+      text: 'The AI side comes from product work: an on-demand technology research platform, an adaptive interview-practice application and an image-generation suite for tattoo artists — all systems where model output had to be structured, evaluated and paid for at volume rather than demonstrated once. Across 50-plus delivered builds, the pattern that holds is unromantic: the automations that survive are narrow, observed, reversible and owned by somebody.',
     },
     {
       type: 'p',

@@ -5,7 +5,7 @@ export const post: BlogPost = {
   title: 'WordPress vs Bubble.io: How to Choose the Right Stack',
   metaTitle: 'WordPress vs Bubble.io: Choosing the Right Stack',
   metaDescription:
-    'WordPress or Bubble.io? A practical guide to picking the right stack for your site or app, from a studio that has shipped 42 WordPress and 7 Bubble builds.',
+    'WordPress or Bubble.io? A practical guide to picking the right stack for your site or app, from a studio that has shipped 42 WordPress and 5 Bubble builds.',
   category: 'Strategy',
   tags: ['WordPress', 'Bubble.io', 'No-Code', 'Tech Stack', 'Web Applications'],
   publishedAt: '2026-07-22',
@@ -31,7 +31,7 @@ export const post: BlogPost = {
     },
     {
       type: 'p',
-      text: 'We have delivered 49 projects across both stacks — 42 on WordPress and 7 on Bubble.io — for clients on four continents, and the pattern is consistent. Teams who pick the wrong stack rarely fail because the platform could not technically do the job. They fail because they spend the next eighteen months fighting the tool: bolting a fragile membership plugin onto a marketing site that should have been an application, or rebuilding a blog inside an app platform that was never designed to be a publishing engine.',
+      text: 'We have delivered 50 projects across these stacks — 42 on WordPress, 5 on Bubble.io, one hybrid of the two, and one rebuilt as a custom Next.js application — for clients on four continents, and the pattern is consistent. Teams who pick the wrong stack rarely fail because the platform could not technically do the job. They fail because they spend the next eighteen months fighting the tool: bolting a fragile membership plugin onto a marketing site that should have been an application, or rebuilding a blog inside an app platform that was never designed to be a publishing engine.',
     },
     {
       type: 'p',

@@ -31,7 +31,7 @@ export const post: BlogPost = {
     },
     {
       type: 'p',
-      text: 'The frustrating part is that almost none of that is dramatic. There is no single catastrophic event to point at, which is exactly why it goes unnoticed until someone says “we are not getting enquiries any more”. By then the fix is rarely a small one. We have taken over enough neglected sites across our 49+ delivered projects to know the pattern well: the recovery cost is almost always a multiple of what steady maintenance would have cost over the same period.',
+      text: 'The frustrating part is that almost none of that is dramatic. There is no single catastrophic event to point at, which is exactly why it goes unnoticed until someone says “we are not getting enquiries any more”. By then the fix is rarely a small one. We have taken over enough neglected sites across our 50+ delivered projects to know the pattern well: the recovery cost is almost always a multiple of what steady maintenance would have cost over the same period.',
     },
     {
       type: 'p',

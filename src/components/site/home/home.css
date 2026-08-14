@@ -191,18 +191,21 @@
 
 /* Proof panel replaces the mockup's grey "team photo placeholder" well.
    1px gaps over a hairline background draw the grid rules. */
+/* Separated tiles rather than the old 1px-gap "background bleeds through as a
+   divider" trick — that packed the figures edge to edge with no breathing room
+   between them. Each tile now carries its own hairline and the grid has a real
+   gap, so the panel reads as a set of cards instead of a table. */
 .home-why__proof-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  background: var(--border-hairline);
-  border: 1px solid var(--border-hairline);
-  border-radius: var(--radius-card);
-  overflow: hidden;
+  gap: 14px;
 }
 
 .home-why__proof-grid .tk-stat {
-  padding: 22px 12px;
+  padding: 26px 18px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  background: #fff;
 }
 
 .home-why__proof-grid .tk-stat__value {
@@ -214,7 +217,7 @@
 }
 
 .home-why__proof-note {
-  margin-top: 14px;
+  margin-top: 24px;
   font-size: 13.5px;
   line-height: 1.5;
   text-align: center;

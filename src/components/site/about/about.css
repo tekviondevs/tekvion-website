@@ -45,12 +45,27 @@
   padding: 0;
   margin: 48px 0 0;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* Three columns, not four: there are nine proof points, so 3x3 fills every
+     row exactly. A four-column track left a ragged 4 + 4 + 1 last row. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 
 .about-proof > li {
   display: flex;
+}
+
+/* The LitWrap inside each item is a flex child, so without this it sized to its
+   own content and left the tiles at ragged widths inside equal grid cells —
+   which read as "inconsistent boxes". Stretch it to fill the whole cell; the
+   `.lit-wrap > *` rule in ds.css then stretches the Stat inside it. */
+.about-proof > li > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-proof .tk-stat {
+  padding: 26px 18px;
 }
 
 .about-proof__note {

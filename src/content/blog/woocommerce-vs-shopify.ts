@@ -216,7 +216,7 @@ function tv_trade_price( $price, $product ) {
     },
     {
       type: 'p',
-      text: 'Across 49 delivered projects — 42 on WordPress and 7 on Bubble.io, for clients on four continents — the pattern that holds is simple. The stores that keep growing are the ones with a clear owner, a maintenance rhythm and someone measuring the pages that make money. The platform is a means to that, not a substitute for it.',
+      text: 'Across 50 delivered builds — 42 on WordPress, 5 on Bubble.io, plus hybrid and custom Next.js work, for clients on four continents — the pattern that holds is simple. The stores that keep growing are the ones with a clear owner, a maintenance rhythm and someone measuring the pages that make money. The platform is a means to that, not a substitute for it.',
     },
 
     { type: 'h2', text: 'Making the call' },

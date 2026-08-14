@@ -3,8 +3,9 @@ import type { Service } from '@/content/types';
 /**
  * Development services — the build side of Tekvion Innovations.
  *
- * Grounded in real delivery experience: 49+ projects shipped, 42 of them on
- * WordPress and 7 on Bubble.io, including multilingual builds across eight
+ * Grounded in real delivery experience: 50+ projects shipped, 42 of them on
+ * WordPress, 5 on Bubble.io, plus hybrid and custom Next.js work, including
+ * multilingual builds across eight
  * languages, AI/LLM product work, and hybrid marketing-site + app architectures.
  */
 export const developmentServices: Service[] = [
@@ -171,7 +172,7 @@ export const developmentServices: Service[] = [
       'Professional WordPress development: custom themes, ACF content models, WooCommerce, multilingual builds and fast, secure sites you can edit without a developer.',
     heroTitle: 'WordPress Development for Sites That Have to Perform',
     heroIntro:
-      'WordPress is the backbone of our studio: 42 of our 49 delivered projects run on it, from a Hebrew right-to-left learning platform to a UK flooring retailer with 220-plus showrooms. We build it the disciplined way — few plugins, structured fields, real performance budgets — so the site stays fast and safe for years, not weeks.',
+      'WordPress is the backbone of our studio: 42 of our 50 delivered builds run on it, from a Hebrew right-to-left learning platform to a UK flooring retailer with 220-plus showrooms. We build it the disciplined way — few plugins, structured fields, real performance budgets — so the site stays fast and safe for years, not weeks.',
     whatYouGet: [
       {
         title: 'A build without plugin sprawl',
@@ -1166,7 +1167,7 @@ export const developmentServices: Service[] = [
       'Bubble.io development for SaaS products, marketplaces, AI tools and admin panels. Full-stack no-code builds with real data design, privacy rules and workflows.',
     heroTitle: 'Bubble.io Development for Products That Need to Ship',
     heroIntro:
-      'Bubble.io lets us build a working, database-backed application in weeks rather than quarters — but only if it is architected like software rather than assembled like a slide deck. We have delivered seven Bubble products, including AI research and interview platforms, an AI image-generation SaaS, a marketplace admin panel and a reporting tool with custom PDF generation.',
+      'Bubble.io lets us build a working, database-backed application in weeks rather than quarters — but only if it is architected like software rather than assembled like a slide deck. We have delivered Bubble products including AI research and interview platforms, an AI image-generation SaaS, a marketplace admin panel and a reporting tool with custom PDF generation.',
     whatYouGet: [
       {
         title: 'A database designed for how the product will grow',

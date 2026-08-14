@@ -22,7 +22,7 @@ export const tagline = 'Think. Build. Launch.';
 export const foundingYear = '2021';
 
 export const defaultDescription =
-  'Tekvion Innovations is a full-service web agency. We design, build, automate and maintain fast websites and web apps — 49+ projects across four continents.';
+  'Tekvion Innovations is a full-service web agency. We design, build, automate and maintain fast websites and web apps — 50+ projects across four continents.';
 
 export const contact = {
   email: 'business@tekvion.net',
